@@ -54,4 +54,10 @@ public class UserServiceImpl implements IUserService {
     public Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception {
         return null;
     }
+
+    @Override
+    public Result<Object> getVarCode() throws Exception {
+
+        return null;
+    }
 }

@@ -28,4 +28,6 @@ public interface IUserService {
      * @throws Exception
      */
     Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception;
+
+    Result<Object> getVarCode() throws Exception;
 }
