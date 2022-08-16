@@ -4,6 +4,7 @@ import com.app.wechat.domain.dto.ChangPasswordDto;
 import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
 import com.app.wechat.domain.base.Result;
+import com.app.wechat.domain.vo.VarCodeVo;
 
 public interface IUserService {
     /**
@@ -29,5 +30,5 @@ public interface IUserService {
      */
     Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception;
 
-    Result<Object> getVarCode() throws Exception;
+    Result<VarCodeVo> getVarCode() throws Exception;
 }

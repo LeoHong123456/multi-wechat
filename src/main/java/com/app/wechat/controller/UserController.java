@@ -4,6 +4,7 @@ import com.app.wechat.domain.base.Result;
 import com.app.wechat.domain.dto.ChangPasswordDto;
 import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
+import com.app.wechat.domain.vo.VarCodeVo;
 import com.app.wechat.service.IUserService;
 import com.app.wechat.utils.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/getVarCode", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Object> getVarCode() throws Exception{
+    @GetMapping(value = "/getVarCode", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Result<VarCodeVo> getVarCode() throws Exception{
         return userService.getVarCode();
     }
 

@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>首页</title>
-    <link rel="stylesheet" href="../css/layui.css" th:href="@{../css/layui.css}">
-    <link rel="stylesheet" href="../css/font-awesome.css" th:href="@{../css/font-awesome.css}">
-    <link rel="stylesheet" href="../css/all.min.css" th:href="@{../css/all.min.css">
+    <link rel="shortcut icon" href="/favicon.webp" th:href="@{favicon.webp}"/>
+    <link rel="stylesheet" th:href="@{/admin/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/all.min.css}">
+
     <style>
         .layui-footer {
             text-align: center;
@@ -42,7 +44,7 @@
             </li>
             <li class="layui-nav-item layui-hide-xs">
                 <a href="">下载记录</a>
-            </li>1
+            </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
@@ -135,8 +137,7 @@
     </div>
 </div>
 
-<script src="../js/jquery.min.js" th:src="@{../js/jquery.min.js}"></script>
-<script src="../js/layui.js" th:src="@{../js/layui.js}"></script>
+<script th:src="@{/admin/layui/layui.js}"></script>
 
 <script>
     window.addEventListener("load", function(){

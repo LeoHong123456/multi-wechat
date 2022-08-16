@@ -1,6 +1,5 @@
 package com.app.wechat.domain.base;
 
-import com.alibaba.fastjson.JSONObject;
 import com.app.wechat.domain.enums.RestCodeEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -76,9 +75,8 @@ public class Result<T> implements java.io.Serializable {
 
     public static <T> Result<T> success(RestCodeEnum resultCode, T data) {
         Result<T> result = new Result<>();
-        result.setMessage(JSONObject.parseObject(resultCode.message()));
+        result.setMessage(resultCode.message());
         result.setCode(resultCode.code());
-        result.setEnumName(resultCode.name());
         result.setData(data);
         return result;
     }

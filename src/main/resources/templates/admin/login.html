@@ -20,7 +20,7 @@
             </div>
 
             <div class="login-form">
-                <form class="layui-form" method="post">
+                <form class="layui-form" method="post" id="loginForm">
                     <div class="layui-form-item">
                         <label class="layui-form-label">用戶名</label>
                         <div class="layui-input-block">
@@ -33,15 +33,17 @@
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-inline">
                             <i class="fa fa-key"></i>
-                            <input type="password" name="password" required lay-verify="username"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="password" required lay-verify="password"  placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码</label>
-                        <div class="layui-input-inline">
-                            <i class="fa fa-key"></i>
-                            <input type="text" name="varcode" required lay-verify="username"  autocomplete="off" class="varcode layui-input">
+                        <div class="layui-input-inline varcode-image">
+                            <i class="fa fa-shield-alt"></i>
+                            <input type="text" name="varCode" required lay-verify="varCode" placeholder="请输入验证码" autocomplete="off" class="varCode layui-input">
+                            <input type="hidden" name="varCodeId" required lay-verify="varCodeId" placeholder="请输入验证码" autocomplete="off" class="varCodeId layui-input">
+                            <a href="javascript:;"><img class="varcode-img" src="#" alt="验证码"></a>
                         </div>
                     </div>
 
@@ -62,38 +64,71 @@
 <script th:src="@{/admin/layui/layui.js}"></script>
 <script>
     window.addEventListener("load", function () {
-        layui.use(['form', 'jquery'], function () {
-            var form = layui.form;
+        let pathName = window.location.pathname.substring(1);
+        let webName = pathName == '' ? '': pathName.substring(0, pathName.indexOf('/'))
+        const BASE_URL = window.location.protocol + '//' + window.location.host + '/'+ webName + '/';
+
+        layui.use(['jquery','form'], function () {
+            var form = layui.form,$ = layui.$;
+            form.render();
             form.verify({
-                username: function (value) {if (value.length < 5) return "会员名必须4~12个小写字母"},
+                username: function (value) {if (value.length < 4) return "会员名必须4~12个小写字母"},
                 password: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
-                content: function (value) {layedit.sync(editIndex); }
+                varcode: [/^[0-9]{4}$/, '验证码错误'],
             });
             form.on('submit(login)', function (data) {
+                var loading = layer.load(0,{shade:true, time:2000});
                 $.ajax({
-                    url: "http://127.0.0.1:8500/multi-wechat/admin/login",
+                    url: BASE_URL + "/admin/login",
                     method: "post",
-                    headers:{"Content-type": "application/x-www-urlencoded"},
-                    data: data.field,
+                    data: $('#loginForm').serialize(),
                     dataType: 'json',
                     success: function(response){
-                        if(response.code === 100000){
-                            layer.msg("提交成功",{icon:1,time:2000},function(){
-                                layer.msg(response.msg);
-                                return false;
-                            })
+                        if(response.code === 100001){
+                            layer.msg(response.message,{icon:6,time:2000});
+                            getVarCode();
+                        }else if(response.code === 900001){
+                            layer.msg(response.message,{icon:5,time:2000})
                         }else{
-                            layer.msg(response.message,{icon:5})
-                            return false;
+                            layer.msg(response.message,{icon:5,time:2000})
+                            getVarCode();
                         }
                     },
                     error: function(response){
                         layer.msg(response.message);
-                        return false;
+                        getVarCode();
                     }
                 });
+                layer.close(loading);
                 return false;
             });
+
+            $(".varcode-image").on('click', 'img',function(){
+                getVarCode();
+            });
+
+            //获取验证码
+            function getVarCode(){
+                $.ajax({
+                    url: BASE_URL + "/admin/getVarCode",
+                    method: "get",
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.code === 100000){
+                            $('.varcode-img').attr('src', response.data.varCode);
+                            $('.varCodeId').val(response.data.varCodeId);
+                        }else{
+                            layer.msg(response.message,{icon:5})
+                        }
+                    },
+                    error: function(response){
+                        layer.msg(response.message);
+                        layer.msg(data.field.toString())
+                    }
+                });
+                // $.modal.closeLoading();
+            }
+            getVarCode();
         });
     });
 </script>

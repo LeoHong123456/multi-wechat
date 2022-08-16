@@ -52,13 +52,31 @@ body {
     left: 2px;
 }
 
+.fa-shield-alt{
+    position: absolute;
+    top: 11px;
+    left: 2px;
+}
+
+.varcode-image{
+    position: relative;
+}
+
+.varcode-img{
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: -60px;
+    width: 100px;
+    height: 38px;
+}
 .layui-btn {
     width: 250px;
 !important;
 }
 
-.varcode {
-    width: 100px;
+.varCode {
+    width: 150px;
 }
 
 .footer {

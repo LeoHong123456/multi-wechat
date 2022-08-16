@@ -6,5 +6,6 @@ import java.io.Serializable;
 public class LoginDto implements Serializable {
     private String username;
     private String password;
-    private String varcode;
+    private String varCode;
+    private String varCodeId;
 }

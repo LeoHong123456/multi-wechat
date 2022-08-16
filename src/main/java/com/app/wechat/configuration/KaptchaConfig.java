@@ -25,9 +25,9 @@ public class KaptchaConfig {
         properties.setProperty("kaptcha.obscurificator.impl", "com.google.code.kaptcha.impl.WaterRipple");
         properties.setProperty("kaptcha.border.color", "105,179,90");
         properties.setProperty("kaptcha.textproducer.font.color", "blue");
-        properties.setProperty("kaptcha.image.width", "130");
-        properties.setProperty("kaptcha.image.height", "50");
-        properties.setProperty("kaptcha.textproducer.font.size", "40");
+        properties.setProperty("kaptcha.image.width", "100");
+        properties.setProperty("kaptcha.image.height", "30");
+        properties.setProperty("kaptcha.textproducer.font.size", "30");
         properties.setProperty("kaptcha.session.key", "code");
         properties.setProperty("kaptcha.textproducer.char.string", "0123456789");
         properties.setProperty("kaptcha.textproducer.char.length", "4");
