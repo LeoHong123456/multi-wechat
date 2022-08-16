@@ -10,5 +10,4 @@ public class MultiWechatApplication {
 
 		SpringApplication.run(MultiWechatApplication.class, args);
 	}
-
 }

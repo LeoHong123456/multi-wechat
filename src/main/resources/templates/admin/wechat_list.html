@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>微信文件列表</title>
+    <link rel="stylesheet" href="../css/layui.css">
 </head>
 <body>
 <div class="container">
-
     <table class="layui-hide" id="test"></table>
-
 </div>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -24,7 +22,7 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+<script src="../js/layui.js" charset="utf-8"></script>
 
 <script>
     layui.use('table', function () {

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <link rel="shortcut icon" href="/favicon.webp" th:href="@{favicon.webp}"/>
+    <link th:href="@{/admin/layui/css/layui.css}" rel="stylesheet"/>
+    <link th:href="@{/admin/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/admin/css/all.min.css}"  rel="stylesheet">
+    <link th:href="@{/admin/css/login.css}"  rel="stylesheet">
+</head>
+
+<body>
+<div class="main">
+    <div class="container">
+        <div class="section">
+            <div class="title">
+                <h1>文件传输平台</h1>
+            </div>
+
+            <div class="login-form">
+                <form class="layui-form" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用戶名</label>
+                        <div class="layui-input-block">
+                            <i class="fa fa-user-alt"></i>
+                            <input type="text" name="username" required lay-verify="username" placeholder="请输入用戶名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-inline">
+                            <i class="fa fa-key"></i>
+                            <input type="password" name="password" required lay-verify="username"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-input-inline">
+                            <i class="fa fa-key"></i>
+                            <input type="text" name="varcode" required lay-verify="username"  autocomplete="off" class="varcode layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>© 2018-2022 微信多开 Apache License 2.0</p>
+</div>
+
+<script th:src="@{/admin/layui/layui.js}"></script>
+<script>
+    window.addEventListener("load", function () {
+        layui.use(['form', 'jquery'], function () {
+            var form = layui.form;
+            form.verify({
+                username: function (value) {if (value.length < 5) return "会员名必须4~12个小写字母"},
+                password: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
+                content: function (value) {layedit.sync(editIndex); }
+            });
+            form.on('submit(login)', function (data) {
+                $.ajax({
+                    url: "http://127.0.0.1:8500/multi-wechat/admin/login",
+                    method: "post",
+                    headers:{"Content-type": "application/x-www-urlencoded"},
+                    data: data.field,
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.code === 100000){
+                            layer.msg("提交成功",{icon:1,time:2000},function(){
+                                layer.msg(response.msg);
+                                return false;
+                            })
+                        }else{
+                            layer.msg(response.message,{icon:5})
+                            return false;
+                        }
+                    },
+                    error: function(response){
+                        layer.msg(response.message);
+                        return false;
+                    }
+                });
+                return false;
+            });
+        });
+    });
+</script>
+</body>
+</html>

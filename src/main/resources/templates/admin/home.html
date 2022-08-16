@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>首页</title>
-    <link rel="stylesheet" href="../css/layui.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/layui.css" th:href="@{../css/layui.css}">
+    <link rel="stylesheet" href="../css/font-awesome.css" th:href="@{../css/font-awesome.css}">
+    <link rel="stylesheet" href="../css/all.min.css" th:href="@{../css/all.min.css">
     <style>
         .layui-footer {
             text-align: center;
@@ -42,7 +42,7 @@
             </li>
             <li class="layui-nav-item layui-hide-xs">
                 <a href="">下载记录</a>
-            </li>
+            </li>1
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
@@ -134,10 +134,12 @@
         <p>© 2018-2022 微信多开 Apache License 2.0</p>
     </div>
 </div>
-<script src="../js/layui.js"></script>
+
+<script src="../js/jquery.min.js" th:src="@{../js/jquery.min.js}"></script>
+<script src="../js/layui.js" th:src="@{../js/layui.js}"></script>
+
 <script>
     window.addEventListener("load", function(){
-
         layui.use(['element', 'layer','jquery', 'util'], function () {
             var element = layui.element, layer = layui.layer, util = layui.util, $ = layui.jquery;
             util.event('lay-header-event', {
@@ -156,7 +158,6 @@
                 }
             });
 
-
             $(".layui-nav-child").on("click", "a", function() {
                 var sId = $(this).data("id"); //获取data-id的值
                 window.location.hash = sId; //设置锚点
@@ -171,7 +172,7 @@
                         pathn = "wechat_upload.html";
                         break;
                     case "#wechat-list":
-                        pathn = "wechat-list.html";
+                        pathn = "wechat_list.html";
                         break;
                     case "#tiktok-upload":
                         pathn = "tiktok_upload.html";
