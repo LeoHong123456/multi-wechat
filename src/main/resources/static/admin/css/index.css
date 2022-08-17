@@ -7,15 +7,13 @@
 .admin-logo{
     position: absolute;
     left: 0;
-    top: 15px;
-    font-size: 30px;
+    top: 14px;
+    font-size: 30px !important;
     color: green;
 }
-
 .chang-pwd h1{
     margin-bottom: 20px;
 }
-
 .chang-pwd{
     display: none;
     width:500px;
@@ -29,7 +27,6 @@
     transform: translate(-50%, 0);
     background-color: rgba(130, 161, 159, 0.3);
 }
-
 .close-button {
     width: 40px;
     height: 40px;
@@ -40,7 +37,6 @@
     background-color: pink;
     cursor: pointer;
 }
-
 .close-button::before{
     content: "";
     position: absolute;

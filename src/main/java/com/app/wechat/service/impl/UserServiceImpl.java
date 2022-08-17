@@ -8,6 +8,7 @@ import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
 import com.app.wechat.domain.entity.User;
 import com.app.wechat.domain.enums.RestCodeEnum;
+import com.app.wechat.domain.vo.UserVo;
 import com.app.wechat.domain.vo.VarCodeVo;
 import com.app.wechat.service.IUserService;
 import com.app.wechat.utils.JSONUtil;
@@ -18,6 +19,7 @@ import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +56,9 @@ public class UserServiceImpl implements IUserService {
                 String remitno = StringsUtil.randomString(12);
                 user.setSessionId(MD5Util.getMD5(remitno));
                 RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
-                return Result.success(RestCodeEnum.LOGIN_SUCCESS, user);
+                UserVo vo = new UserVo();
+                BeanUtils.copyProperties(user, vo);
+                return Result.success(RestCodeEnum.LOGIN_SUCCESS, vo);
             }
         }
         return Result.failure(RestCodeEnum.FAIL_TO_LOGIN_ERROR);
@@ -93,7 +97,7 @@ public class UserServiceImpl implements IUserService {
                 user.setSessionId("");
                 user.setPassword(encryptNewPwd);
                 RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
-                return Result.success(RestCodeEnum.GLOBAL_SUCCESS, user);
+                return Result.success(RestCodeEnum.GLOBAL_SUCCESS);
             }
         }
         return Result.failure(RestCodeEnum.GLOBAL_FAIL);

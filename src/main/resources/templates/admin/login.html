@@ -90,14 +90,15 @@
                             sessionStorage.setItem('multi_session', JSON.stringify(response.data));
                             window.top.location.href = "index";
                         }else if(response.code === 900005){
-                            layer.msg(response.message,{icon:5,time:2000})
+                            layer.msg(response.message,{icon:5})
+
                         }else{
-                            layer.msg(response.message,{icon:5,time:2000})
+                            layer.msg(response.message,{icon:5})
                             getVarCode();
                         }
                     },
                     error: function(response){
-                        layer.msg(response.message);
+                        layer.msg(response.message,{icon:5})
                         getVarCode();
                     }
                 });

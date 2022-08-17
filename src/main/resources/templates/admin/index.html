@@ -151,7 +151,6 @@
                 menuLeft: function (othis) {
                 }
             });
-
             $('#loginOut').on('click', function(){
                 var loading = layer.load(0,{shade:true, time:2000});
                 let session = JSON.parse(sessionStorage.getItem('multi_session'));
@@ -193,12 +192,12 @@
                     async : true,
                     dataType : 'json',
                     error : function(data) {
-                        layer.msg('请求失败', {icon : 5});
+                        layer.msg(data.message, {icon : 5});
                         $(".chang-pwd").fadeOut();
                     },
                     success : function(data) {
                         if (data.code === 100000) {
-                            layer.msg('操作成功', {icon : 6,time : 2000}, function() {
+                            layer.msg('密码修改成功', {icon : 6,time : 2000}, function() {
                                 $(".chang-pwd").fadeOut();
                                 window.top.location.href = "login";
                             });
@@ -209,7 +208,6 @@
                 });
                 layer.close(loading);
             });
-
         });
     });
 </script>
