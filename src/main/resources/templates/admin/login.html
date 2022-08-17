@@ -86,7 +86,7 @@
                     dataType: 'json',
                     success: function(response){
                         if(response.code === 100001){
-                            layer.msg(response.message,{icon:6,time:2000});
+                            layer.msg(response.message,{icon:6,time:5000});
                             sessionStorage.setItem('multi_session', JSON.stringify(response.data));
                             window.top.location.href = "index";
                         }else if(response.code === 900005){

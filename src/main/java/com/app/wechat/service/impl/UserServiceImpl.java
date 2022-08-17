@@ -63,16 +63,13 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Result<Object> loginOut(LoginOutDto loginOutDto) throws Exception {
         String username = loginOutDto.getUsername();
-        String sessionId = loginOutDto.getSessionId();
         RedisTemplate<String, Object> redisTemplate = redisConfig.getRedisTemplateByDb(CacheDbConstant.CACHE_DB_0);
         Object o = RedisUtils.get(username, redisTemplate);
         if(ObjectUtils.allNotNull(o)) {
             User user = JSONUtil.json2Bean(o.toString(), User.class);
-            if(StringUtils.equals(sessionId, user.getSessionId())){
-                user.setSessionId("");
-                RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
-                return Result.success(RestCodeEnum.GLOBAL_SUCCESS, user);
-            }
+            user.setSessionId("");
+            RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
+            return Result.success(RestCodeEnum.GLOBAL_SUCCESS);
         }
         return Result.failure(RestCodeEnum.FAIL_TO_LOGIN_ERROR);
     }

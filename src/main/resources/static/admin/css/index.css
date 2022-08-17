@@ -1,0 +1,71 @@
+.layui-footer {
+    text-align: center;
+}
+.layui-header{
+    position: relative !important;
+}
+.admin-logo{
+    position: absolute;
+    left: 0;
+    top: 15px;
+    font-size: 30px;
+    color: green;
+}
+
+.chang-pwd h1{
+    margin-bottom: 20px;
+}
+
+.chang-pwd{
+    display: none;
+    width:500px;
+    height: 280px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+    position: absolute;
+    top: 280px;left: 50%;
+    padding-top: 10px;
+    transform: translate(-50%, 0);
+    background-color: rgba(130, 161, 159, 0.3);
+}
+
+.close-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    background-color: pink;
+    cursor: pointer;
+}
+
+.close-button::before{
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 3px;
+    top: 5px;
+    left: 50%;
+    transform: rotate(45deg);
+    background-color: #fff;
+}
+.close-button::after{
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 3px;
+    top: 5px;
+    left: 50%;
+    transform: rotate(-45deg);
+    background-color: #fff;
+}
+.layui-input, .layui-textarea {
+    width: 250px !important;
+}
+.layui-btn{
+    width: 200px !important;
+    margin-top: 15px !important;
+    margin-left: -150px !important;
+}
