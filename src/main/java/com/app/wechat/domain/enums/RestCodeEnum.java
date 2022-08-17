@@ -14,7 +14,8 @@ public enum RestCodeEnum {
     OLD_PASSWORD_ERROR(900002,"原密码错误"),
     FAIL_TO_NO_HANDLER_FOUND(900404, "非法请求"),
     FAIL_TO_PARAM_ERROR(900003, "参数异常"),
-    FAIL_TO_LOGIN_ERROR(900005, "用户名或密码错误");
+    FAIL_TO_LOGIN_ERROR(900005, "用户名或密码错误"),
+    FAIL_TO_LOGIN_OUT_ERROR(900006, "请重新登录");
 
     private String msg;
     private Integer code;
