@@ -52,28 +52,19 @@
                     admin
                 </a>
                 <dl class="layui-nav-child">
-                    <div class="edit-password" style="display: none">
-                        <form class="layui-form" method="post">
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">原密码</label>
-                                <div class="layui-input-block">
-                                    <input type="password" id="oldPwd" name="oldPwd" placeholder="请输入员密码" autocomplete="off" class="layui-input">
-                                </div>
+                    <div class="edit-password" id="edit-password" style="display: none">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">原密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" id="oldPwd" name="oldPwd" placeholder="请输入员密码" autocomplete="off" class="layui-input">
                             </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">新密码</label>
-                                <div class="layui-input-block">
-                                    <input type="password" id="password" name="password" placeholder="请输入新密码" autocomplete="off" class="layui-input">
-                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">新密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" id="password" name="password" placeholder="请输入新密码" autocomplete="off" class="layui-input">
                             </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-setval">赋值</button>
-                                    <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-getval">取值</button>
-                                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <dd><a id="changPwd" href="">修改密码</a></dd>
                     <dd><a id="loginOut" href="">登出</a></dd>
@@ -168,6 +159,7 @@
                     layer.msg('餐单', {icon: 0});
                 }
             });
+
             $(".layui-nav-child").on("click", "a", function() {
                 var sId = $(this).data("id");
                 window.location.hash = sId;
@@ -229,7 +221,14 @@
                 let session = JSON.parse(sessionStorage.getItem('multi_session'));
                 layer.open({
                     type: 1,
-                    skin: 'layui-layer-molv',
+                    skin: 'edit-password',
+                    title: ['修改管理员密码','font-size:18px'],
+                    content: $("#edit-password")
+                });
+
+                /*layer.open({
+                    type: 2,
+                    skin: 'edit-password',
                     area: ['380px', '270px'],
                     title: ['修改管理员密码','font-size:18px'],
                     btn: ['确定', '取消'],
@@ -260,7 +259,7 @@
                             }
                         });
                     }
-                });
+                });*/
             });
         });
     });
