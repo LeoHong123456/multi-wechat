@@ -40,13 +40,7 @@ body {
 !important
 }
 
-.fa-user-alt {
-    position: absolute;
-    top: 11px;
-    left: 2px;
-}
-
-.fa-key {
+.fa-key,.fa-user-alt,.fa-exclamation-circle{
     position: absolute;
     top: 11px;
     left: 2px;
