@@ -11,13 +11,24 @@ public enum RestCodeEnum {
      * 响应消息
      */
     GLOBAL_SUCCESS(100000, "success"),
+
+    /**
+    * 登录成功
+    */
+    LOGIN_SUCCESS(100001,"登录成功"),
+
+    /**
+     * 验证码错误
+     */
+    VAR_CODE_ERROR(900001,"验证码错误"),
+
     /**
      * 系统异常,请稍后再试!
      */
     GLOBAL_FAIL(900000, "error"),
 
 
-    FAIL_TO_NO_HANDLER_FOUND(100404, "非法请求"),
+    FAIL_TO_NO_HANDLER_FOUND(900404, "非法请求"),
 
 
     FAIL_TO_PARAM_ERROR(100001, "参数异常"),

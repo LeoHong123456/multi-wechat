@@ -1,18 +1,10 @@
 package com.app.wechat.configuration;
-
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
 import java.util.Properties;
 
-/**
- * @author leo
- * @ClassName: KaptchaConfig
- * @Description: 验证码配置
- * @date 2018年9月11日
- */
 @Component
 public class KaptchaConfig {
     @Bean
@@ -25,8 +17,8 @@ public class KaptchaConfig {
         properties.setProperty("kaptcha.obscurificator.impl", "com.google.code.kaptcha.impl.WaterRipple");
         properties.setProperty("kaptcha.border.color", "105,179,90");
         properties.setProperty("kaptcha.textproducer.font.color", "blue");
-        properties.setProperty("kaptcha.image.width", "80");
-        properties.setProperty("kaptcha.image.height", "38");
+        properties.setProperty("kaptcha.image.width", "100");
+        properties.setProperty("kaptcha.image.height", "30");
         properties.setProperty("kaptcha.textproducer.font.size", "30");
         properties.setProperty("kaptcha.session.key", "code");
         properties.setProperty("kaptcha.textproducer.char.string", "0123456789");
