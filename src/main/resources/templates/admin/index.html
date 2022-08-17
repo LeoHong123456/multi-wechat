@@ -202,8 +202,9 @@
                                 window.top.location.href = "login";
                             });
                         }else if(data.code === 100006){
-                            layer.msg(data.message, {icon : 5});
-                            window.top.location.href = "login";
+                            layer.msg(data.message, {icon : 5},function(){
+                                window.top.location.href = "login";
+                            });
                         }else {
                             layer.msg(data.message, {icon : 5});
                         }

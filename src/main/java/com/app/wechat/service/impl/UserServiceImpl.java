@@ -98,9 +98,9 @@ public class UserServiceImpl implements IUserService {
                 user.setPassword(encryptNewPwd);
                 RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
                 return Result.success(RestCodeEnum.GLOBAL_SUCCESS);
+            }else{
+                return Result.failure(RestCodeEnum.FAIL_TO_LOGIN_OUT_ERROR);
             }
-        }else{
-            return Result.failure(RestCodeEnum.FAIL_TO_LOGIN_OUT_ERROR);
         }
         return Result.failure(RestCodeEnum.GLOBAL_FAIL);
     }
