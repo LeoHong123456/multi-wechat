@@ -62,12 +62,44 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Result<Object> loginOut(LoginOutDto loginOutDto) throws Exception {
-        return null;
+        String username = loginOutDto.getUsername();
+        String sessionId = loginOutDto.getSessionId();
+        RedisTemplate<String, Object> redisTemplate = redisConfig.getRedisTemplateByDb(CacheDbConstant.CACHE_DB_0);
+        Object o = RedisUtils.get(username, redisTemplate);
+        if(ObjectUtils.allNotNull(o)) {
+            User user = JSONUtil.json2Bean(o.toString(), User.class);
+            if(StringUtils.equals(sessionId, user.getSessionId())){
+                user.setSessionId("");
+                RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
+                return Result.success(RestCodeEnum.GLOBAL_SUCCESS, user);
+            }
+        }
+        return Result.failure(RestCodeEnum.FAIL_TO_LOGIN_ERROR);
     }
 
     @Override
     public Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception {
-        return null;
+        String oldPwd = changPasswordDto.getOldPwd();
+        String password = changPasswordDto.getPassword();
+        String username = changPasswordDto.getUsername();
+        String sessionId = changPasswordDto.getSessionId();
+        String encryptPwd = MD5Util.getMD5(MD5Util.getMD5(oldPwd)+"wechat");
+        String encryptNewPwd = MD5Util.getMD5(MD5Util.getMD5(password)+"wechat");
+        RedisTemplate<String, Object> redisTemplate = redisConfig.getRedisTemplateByDb(CacheDbConstant.CACHE_DB_0);
+        Object o = RedisUtils.get(username, redisTemplate);
+        if(ObjectUtils.allNotNull(o)) {
+            User user = JSONUtil.json2Bean(o.toString(), User.class);
+            if(StringUtils.equals(sessionId, user.getSessionId())){
+                if(!StringUtils.equals(encryptPwd, user.getPassword())){
+                    return Result.failure(RestCodeEnum.OLD_PASSWORD_ERROR, user);
+                }
+                user.setSessionId("");
+                user.setPassword(encryptNewPwd);
+                RedisUtils.set(username, JSONUtil.bean2Json(user), redisTemplate);
+                return Result.success(RestCodeEnum.GLOBAL_SUCCESS, user);
+            }
+        }
+        return Result.failure(RestCodeEnum.GLOBAL_FAIL);
     }
 
     @Override

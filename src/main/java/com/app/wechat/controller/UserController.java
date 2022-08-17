@@ -28,13 +28,14 @@ public class UserController {
     @ResponseBody
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> login(LoginDto userDto) throws Exception{
-        log.info(JSONUtil.bean2Json(userDto));
+        log.info("登录>>>{}",JSONUtil.bean2Json(userDto));
         return userService.login(userDto);
     }
 
     @ResponseBody
     @PostMapping(value = "/loginOut", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> login(LoginOutDto loginOutDto) throws Exception{
+        log.info("登出>>>{}",JSONUtil.bean2Json(loginOutDto));
         return userService.loginOut(loginOutDto);
     }
 

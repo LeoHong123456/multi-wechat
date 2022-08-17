@@ -7,34 +7,14 @@ package com.app.wechat.domain.enums;
  * @ClassName: RestCodeConstants
  */
 public enum RestCodeEnum {
-    /**
-     * 响应消息
-     */
     GLOBAL_SUCCESS(100000, "success"),
-
-    /**
-    * 登录成功
-    */
     LOGIN_SUCCESS(100001,"登录成功"),
-
-    /**
-     * 验证码错误
-     */
-    VAR_CODE_ERROR(900001,"验证码错误"),
-
-    /**
-     * 系统异常,请稍后再试!
-     */
     GLOBAL_FAIL(900000, "error"),
-
-
+    VAR_CODE_ERROR(900001,"验证码错误"),
+    OLD_PASSWORD_ERROR(900002,"原密码错误"),
     FAIL_TO_NO_HANDLER_FOUND(900404, "非法请求"),
-
-
-    FAIL_TO_PARAM_ERROR(100001, "参数异常"),
-
-    FAIL_TO_LOGIN_ERROR(100002, "用户名或密码错误");
-
+    FAIL_TO_PARAM_ERROR(900003, "参数异常"),
+    FAIL_TO_LOGIN_ERROR(900005, "用户名或密码错误");
 
     private String msg;
     private Integer code;
