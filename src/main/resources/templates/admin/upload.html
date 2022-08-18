@@ -20,19 +20,21 @@
         <div class="layui-upload-list" style="max-width: 100%;">
             <table class="layui-table">
                 <colgroup>
-                    <col>
-                    <col width="150">
-                    <col width="260">
-                    <col width="150">
+                    <col width="25%">
+                    <col width="35%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="15%">
                 </colgroup>
                 <thead>
-                <tr>
-                    <th>文件名</th>
-                    <th>签名</th>
-                    <th>大小</th>
-                    <th>上传进度</th>
-                    <th>操作</th>
-                </tr></thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>签名</th>
+                        <th>大小</th>
+                        <th>上传进度</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
                 <tbody id="demoList"></tbody>
             </table>
         </div>
@@ -76,6 +78,9 @@
                         ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
                         ,'</td>'
                         ,'</tr>'].join(''));
+
+                    var textarea = $(['<tr id="upload-'+ index +'"><td colspan="5"><textarea id="demo-"+index style="display: none;width: 100%;margin: 0;padding: 0"></textarea></td></tr>'].join(''));
+                    console.log(textarea);
                     //单个重传
                     tr.find('.demo-reload').on('click', function(){
                         obj.upload(index, file);
@@ -84,10 +89,17 @@
                     tr.find('.demo-delete').on('click', function(){
                         delete files[index]; //删除对应的文件
                         tr.remove();
+                        textarea.remove();
                         uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
                     });
+
                     that.elemList.append(tr);
+                    that.elemList.append(textarea);
                     element.render('progress'); //渲染新加的进度条组件
+                    layui.use('layedit', function(){
+                        var layedit = layui.layedit;
+                        layedit.build("upload-"+ index); //建立编辑器
+                    });
                 });
             }
             ,done: function(res, index, upload){ //成功的回调
