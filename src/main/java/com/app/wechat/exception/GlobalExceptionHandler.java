@@ -4,6 +4,7 @@ import com.app.wechat.domain.enums.RestCodeEnum;
 import com.app.wechat.domain.base.FailResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -45,7 +46,11 @@ public class GlobalExceptionHandler {
         log.error("request param exception!", ex);
         return new FailResult(RestCodeEnum.GLOBAL_FAIL.code(), RestCodeEnum.GLOBAL_FAIL.message());
     }
-
+    @ExceptionHandler(RedisConnectionFailureException.class)
+    public FailResult handleRedisConnectionFailureException(RedisConnectionFailureException ex) {
+        log.error("redis connection exception!", ex);
+        return new FailResult(RestCodeEnum.FAIL_TO_REDIS_ERROR);
+    }
     /**
      * GET请求参数校验异常
      * @param ex

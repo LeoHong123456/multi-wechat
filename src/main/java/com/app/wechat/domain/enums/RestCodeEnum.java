@@ -9,14 +9,17 @@ package com.app.wechat.domain.enums;
 public enum RestCodeEnum {
     GLOBAL_SUCCESS(100000, "success"),
     LOGIN_SUCCESS(100001,"登录成功"),
+    FILE_UPLOAD_SUCCESS(100002,"文件上传成功"),
     GLOBAL_FAIL(900000, "error"),
     VAR_CODE_ERROR(900001,"验证码错误"),
     OLD_PASSWORD_ERROR(900002,"原密码错误"),
     FAIL_TO_NO_HANDLER_FOUND(900404, "非法请求"),
     FAIL_TO_PARAM_ERROR(900003, "参数异常"),
     FAIL_TO_LOGIN_ERROR(900005, "用户名或密码错误"),
-    FAIL_TO_LOGIN_OUT_ERROR(900006, "请重新登录");
+    FAIL_TO_LOGIN_OUT_ERROR(900006, "请重新登录"),
+    FAIL_TO_REDIS_ERROR(900007, "数据库连接异常"),
 
+    FILE_UPLOAD_IS_NULL(900008,"请选择要上传的文件");
     private String msg;
     private Integer code;
 
