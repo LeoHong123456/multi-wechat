@@ -17,7 +17,7 @@
 <div class="container">
     <div class="layui-upload">
         <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
-        <div class="layui-upload-list" style="max-width: 1000px;">
+        <div class="layui-upload-list" style="max-width: 100%;">
             <table class="layui-table">
                 <colgroup>
                     <col>
@@ -68,7 +68,7 @@
                 obj.preview(function(index, file, result){
                     var tr = $(['<tr id="upload-'+ index +'">'
                         ,'<td>'+ file.name +'</td>'
-                        ,'<td><input type="text" id="sign" name="sign"></td>'
+                        ,'<td><input type="text" id="sign" name="sign" placeholder="请输入签名" autocomplete="off" class="layui-input"></td>'
                         ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
                         ,'<td><div class="layui-progress" lay-filter="progress-demo-'+ index +'"><div class="layui-progress-bar" lay-percent=""></div></div></td>'
                         ,'<td>'

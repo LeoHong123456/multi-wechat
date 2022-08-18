@@ -4764,3 +4764,150 @@ java.lang.NullPointerException: null
 2022-08-18 17:53:05.266 [http-nio-8500-exec-4] INFO  [LogAspect.java:57] - 请求参数:[]
 2022-08-18 17:53:05.267 [http-nio-8500-exec-4] INFO  [UploadController.java:19] - D:\workset\multi-wechat
 2022-08-18 17:53:05.267 [http-nio-8500-exec-4] INFO  [LogAspect.java:68] - 处理请求[admin/upload]耗时(毫秒):0
+2022-08-18 17:55:46.635 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-08-18 17:55:46.636 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - Channel 'multi-wechat.errorChannel' has 0 subscriber(s).
+2022-08-18 17:55:46.636 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - stopped bean '_org.springframework.integration.errorLogger'
+2022-08-18 17:55:46.636 [SpringContextShutdownHook] INFO  [ExecutorConfigurationSupport.java:218] - Shutting down ExecutorService 'taskScheduler'
+2022-08-18 17:55:46.638 [SpringContextShutdownHook] INFO  [ExecutorConfigurationSupport.java:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+2022-08-18 17:55:51.091 [restartedMain] INFO  [StartupInfoLogger.java:55] - Starting MultiWechatApplication using Java 1.8.0_291 on DTOPS-2020NAYRL with PID 2796 (D:\workset\multi-wechat\target\classes started by Administrator in D:\workset\multi-wechat)
+2022-08-18 17:55:51.089 [background-preinit] INFO  [Version.java:21] - HV000001: Hibernate Validator 6.1.7.Final
+2022-08-18 17:55:51.094 [restartedMain] INFO  [SpringApplication.java:660] - No active profile set, falling back to default profiles: default
+2022-08-18 17:55:51.137 [restartedMain] INFO  [DeferredLog.java:255] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-18 17:55:51.137 [restartedMain] INFO  [DeferredLog.java:255] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-18 17:55:51.770 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:250] - Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-18 17:55:51.773 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:128] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-18 17:55:51.800 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:188] - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2022-08-18 17:55:51.994 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:213] - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2022-08-18 17:55:52.006 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:303] - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2022-08-18 17:55:52.013 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:463] - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2022-08-18 17:55:52.206 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:55:52.232 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:55:52.236 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:55:52.651 [restartedMain] INFO  [TomcatWebServer.java:108] - Tomcat initialized with port(s): 8500 (http)
+2022-08-18 17:55:52.662 [restartedMain] INFO  [DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8500"]
+2022-08-18 17:55:52.663 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting service [Tomcat]
+2022-08-18 17:55:52.663 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.43]
+2022-08-18 17:55:52.787 [restartedMain] INFO  [DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2022-08-18 17:55:52.788 [restartedMain] INFO  [ServletWebServerApplicationContext.java:289] - Root WebApplicationContext: initialization completed in 1650 ms
+2022-08-18 17:55:53.468 [restartedMain] INFO  [ExecutorConfigurationSupport.java:181] - Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-18 17:55:53.589 [restartedMain] INFO  [WelcomePageHandlerMapping.java:57] - Adding welcome page template: index
+2022-08-18 17:55:53.694 [restartedMain] WARN  [TemplateMode.java:150] - [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2022-08-18 17:55:54.102 [restartedMain] INFO  [OptionalLiveReloadServer.java:58] - LiveReload server is running on port 35729
+2022-08-18 17:55:54.191 [restartedMain] INFO  [ExecutorConfigurationSupport.java:181] - Initializing ExecutorService 'taskScheduler'
+2022-08-18 17:55:54.245 [restartedMain] INFO  [LogAccessor.java:174] - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-08-18 17:55:54.245 [restartedMain] INFO  [LogAccessor.java:174] - Channel 'multi-wechat.errorChannel' has 1 subscriber(s).
+2022-08-18 17:55:54.245 [restartedMain] INFO  [LogAccessor.java:174] - started bean '_org.springframework.integration.errorLogger'
+2022-08-18 17:55:54.246 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8500"]
+2022-08-18 17:55:54.265 [restartedMain] INFO  [TomcatWebServer.java:220] - Tomcat started on port(s): 8500 (http) with context path '/multi-wechat'
+2022-08-18 17:55:54.275 [restartedMain] INFO  [StartupInfoLogger.java:61] - Started MultiWechatApplication in 3.528 seconds (JVM running for 4.814)
+2022-08-18 17:55:56.815 [http-nio-8500-exec-1] INFO  [DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-18 17:55:56.815 [http-nio-8500-exec-1] INFO  [FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2022-08-18 17:55:56.816 [http-nio-8500-exec-1] INFO  [FrameworkServlet.java:547] - Completed initialization in 0 ms
+2022-08-18 17:55:56.845 [http-nio-8500-exec-1] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:55:56.906 [http-nio-8500-exec-1] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:55:56.906 [http-nio-8500-exec-1] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat/admin/index
+2022-08-18 17:55:56.906 [http-nio-8500-exec-1] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:55:56.906 [http-nio-8500-exec-1] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:55:56.907 [http-nio-8500-exec-1] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:55:56.907 [http-nio-8500-exec-1] INFO  [LogAspect.java:57] - 请求参数:[{}]
+2022-08-18 17:55:56.934 [http-nio-8500-exec-1] INFO  [LogAspect.java:68] - 处理请求[admin/index]耗时(毫秒):27
+2022-08-18 17:55:59.169 [http-nio-8500-exec-4] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:55:59.169 [http-nio-8500-exec-4] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:55:59.169 [http-nio-8500-exec-4] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat//admin/upload
+2022-08-18 17:55:59.170 [http-nio-8500-exec-4] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:55:59.170 [http-nio-8500-exec-4] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:55:59.170 [http-nio-8500-exec-4] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:55:59.170 [http-nio-8500-exec-4] INFO  [LogAspect.java:57] - 请求参数:[]
+2022-08-18 17:55:59.178 [http-nio-8500-exec-4] INFO  [UploadController.java:19] - D:\workset\multi-wechat
+2022-08-18 17:55:59.178 [http-nio-8500-exec-4] INFO  [LogAspect.java:68] - 处理请求[admin/upload]耗时(毫秒):7
+2022-08-18 17:56:00.876 [http-nio-8500-exec-6] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:56:00.876 [http-nio-8500-exec-6] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat/admin/index
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:57] - 请求参数:[{}]
+2022-08-18 17:56:00.877 [http-nio-8500-exec-6] INFO  [LogAspect.java:68] - 处理请求[admin/index]耗时(毫秒):0
+2022-08-18 17:56:01.364 [http-nio-8500-exec-9] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:56:01.364 [http-nio-8500-exec-9] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:56:01.365 [http-nio-8500-exec-9] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat//admin/upload
+2022-08-18 17:56:01.365 [http-nio-8500-exec-9] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:56:01.365 [http-nio-8500-exec-9] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:56:01.366 [http-nio-8500-exec-9] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:56:01.366 [http-nio-8500-exec-9] INFO  [LogAspect.java:57] - 请求参数:[]
+2022-08-18 17:56:01.367 [http-nio-8500-exec-9] INFO  [UploadController.java:19] - D:\workset\multi-wechat
+2022-08-18 17:56:01.368 [http-nio-8500-exec-9] INFO  [LogAspect.java:68] - 处理请求[admin/upload]耗时(毫秒):1
+2022-08-18 17:59:04.983 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-08-18 17:59:04.983 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - Channel 'multi-wechat.errorChannel' has 0 subscriber(s).
+2022-08-18 17:59:04.983 [SpringContextShutdownHook] INFO  [LogAccessor.java:174] - stopped bean '_org.springframework.integration.errorLogger'
+2022-08-18 17:59:04.983 [SpringContextShutdownHook] INFO  [ExecutorConfigurationSupport.java:218] - Shutting down ExecutorService 'taskScheduler'
+2022-08-18 17:59:04.985 [SpringContextShutdownHook] INFO  [ExecutorConfigurationSupport.java:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+2022-08-18 17:59:10.894 [background-preinit] INFO  [Version.java:21] - HV000001: Hibernate Validator 6.1.7.Final
+2022-08-18 17:59:10.898 [restartedMain] INFO  [StartupInfoLogger.java:55] - Starting MultiWechatApplication using Java 1.8.0_291 on DTOPS-2020NAYRL with PID 7528 (D:\workset\multi-wechat\target\classes started by Administrator in D:\workset\multi-wechat)
+2022-08-18 17:59:10.899 [restartedMain] INFO  [SpringApplication.java:660] - No active profile set, falling back to default profiles: default
+2022-08-18 17:59:10.944 [restartedMain] INFO  [DeferredLog.java:255] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-18 17:59:10.945 [restartedMain] INFO  [DeferredLog.java:255] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-18 17:59:11.698 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:250] - Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-08-18 17:59:11.700 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:128] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-08-18 17:59:11.730 [restartedMain] INFO  [RepositoryConfigurationDelegate.java:188] - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2022-08-18 17:59:12.157 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:213] - No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2022-08-18 17:59:12.169 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:303] - No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2022-08-18 17:59:12.176 [restartedMain] INFO  [DefaultConfiguringBeanFactoryPostProcessor.java:463] - No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2022-08-18 17:59:12.422 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:59:12.449 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:59:12.451 [restartedMain] INFO  [PostProcessorRegistrationDelegate.java:376] - Bean 'integrationDisposableAutoCreatedBeans' of type [org.springframework.integration.config.annotation.Disposables] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-08-18 17:59:13.036 [restartedMain] INFO  [TomcatWebServer.java:108] - Tomcat initialized with port(s): 8500 (http)
+2022-08-18 17:59:13.050 [restartedMain] INFO  [DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8500"]
+2022-08-18 17:59:13.051 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting service [Tomcat]
+2022-08-18 17:59:13.052 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.43]
+2022-08-18 17:59:13.217 [restartedMain] INFO  [DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2022-08-18 17:59:13.218 [restartedMain] INFO  [ServletWebServerApplicationContext.java:289] - Root WebApplicationContext: initialization completed in 2273 ms
+2022-08-18 17:59:14.115 [restartedMain] INFO  [ExecutorConfigurationSupport.java:181] - Initializing ExecutorService 'applicationTaskExecutor'
+2022-08-18 17:59:14.207 [restartedMain] INFO  [WelcomePageHandlerMapping.java:57] - Adding welcome page template: index
+2022-08-18 17:59:14.373 [restartedMain] WARN  [TemplateMode.java:150] - [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2022-08-18 17:59:14.825 [restartedMain] INFO  [OptionalLiveReloadServer.java:58] - LiveReload server is running on port 35729
+2022-08-18 17:59:14.938 [restartedMain] INFO  [ExecutorConfigurationSupport.java:181] - Initializing ExecutorService 'taskScheduler'
+2022-08-18 17:59:14.999 [restartedMain] INFO  [LogAccessor.java:174] - Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2022-08-18 17:59:15.000 [restartedMain] INFO  [LogAccessor.java:174] - Channel 'multi-wechat.errorChannel' has 1 subscriber(s).
+2022-08-18 17:59:15.000 [restartedMain] INFO  [LogAccessor.java:174] - started bean '_org.springframework.integration.errorLogger'
+2022-08-18 17:59:15.000 [restartedMain] INFO  [DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8500"]
+2022-08-18 17:59:15.020 [restartedMain] INFO  [TomcatWebServer.java:220] - Tomcat started on port(s): 8500 (http) with context path '/multi-wechat'
+2022-08-18 17:59:15.032 [restartedMain] INFO  [StartupInfoLogger.java:61] - Started MultiWechatApplication in 4.573 seconds (JVM running for 6.233)
+2022-08-18 17:59:15.238 [http-nio-8500-exec-1] INFO  [DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-18 17:59:15.238 [http-nio-8500-exec-1] INFO  [FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2022-08-18 17:59:15.240 [http-nio-8500-exec-1] INFO  [FrameworkServlet.java:547] - Completed initialization in 1 ms
+2022-08-18 17:59:15.276 [http-nio-8500-exec-1] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:59:15.335 [http-nio-8500-exec-1] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:59:15.335 [http-nio-8500-exec-1] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat/admin/index
+2022-08-18 17:59:15.335 [http-nio-8500-exec-1] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:59:15.336 [http-nio-8500-exec-1] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:59:15.336 [http-nio-8500-exec-1] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:59:15.336 [http-nio-8500-exec-1] INFO  [LogAspect.java:57] - 请求参数:[{}]
+2022-08-18 17:59:15.366 [http-nio-8500-exec-1] INFO  [LogAspect.java:68] - 处理请求[admin/index]耗时(毫秒):30
+2022-08-18 17:59:17.442 [http-nio-8500-exec-4] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:59:17.443 [http-nio-8500-exec-4] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:59:17.443 [http-nio-8500-exec-4] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat//admin/upload
+2022-08-18 17:59:17.444 [http-nio-8500-exec-4] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:59:17.444 [http-nio-8500-exec-4] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:59:17.444 [http-nio-8500-exec-4] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:59:17.445 [http-nio-8500-exec-4] INFO  [LogAspect.java:57] - 请求参数:[]
+2022-08-18 17:59:17.452 [http-nio-8500-exec-4] INFO  [UploadController.java:19] - D:\workset\multi-wechat
+2022-08-18 17:59:17.452 [http-nio-8500-exec-4] INFO  [LogAspect.java:68] - 处理请求[admin/upload]耗时(毫秒):7
+2022-08-18 17:59:51.190 [http-nio-8500-exec-6] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:59:51.206 [http-nio-8500-exec-6] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:59:51.206 [http-nio-8500-exec-6] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat//admin/loginOut
+2022-08-18 17:59:51.207 [http-nio-8500-exec-6] INFO  [LogAspect.java:54] - 请求方式:POST
+2022-08-18 17:59:51.207 [http-nio-8500-exec-6] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:59:51.207 [http-nio-8500-exec-6] INFO  [LogAspect.java:56] - 请求类型:application/x-www-form-urlencoded; charset=UTF-8
+2022-08-18 17:59:51.207 [http-nio-8500-exec-6] INFO  [LogAspect.java:57] - 请求参数:[{"sessionId":"da39de49673584478f2409c11b9422e0","username":"admin"}]
+2022-08-18 17:59:52.172 [http-nio-8500-exec-6] INFO  [LogAspect.java:68] - 处理请求[admin/loginOut]耗时(毫秒):965
+2022-08-18 17:59:52.189 [http-nio-8500-exec-6] INFO  [ResultHandler.java:24] - 接口返回={"code":100000,"message":"success"}
+2022-08-18 17:59:52.423 [http-nio-8500-exec-9] INFO  [LogAspect.java:38] - ==================开始处理请求=====================>
+2022-08-18 17:59:52.424 [http-nio-8500-exec-9] INFO  [LogAspect.java:52] - 请求来源:127.0.0.1
+2022-08-18 17:59:52.425 [http-nio-8500-exec-9] INFO  [LogAspect.java:53] - 请求URL:http://127.0.0.1:8500/multi-wechat//admin/getVarCode
+2022-08-18 17:59:52.427 [http-nio-8500-exec-9] INFO  [LogAspect.java:54] - 请求方式:GET
+2022-08-18 17:59:52.429 [http-nio-8500-exec-9] INFO  [LogAspect.java:55] - 请求头部:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-08-18 17:59:52.429 [http-nio-8500-exec-9] INFO  [LogAspect.java:56] - 请求类型:null
+2022-08-18 17:59:52.429 [http-nio-8500-exec-9] INFO  [LogAspect.java:57] - 请求参数:[]
+2022-08-18 17:59:52.768 [http-nio-8500-exec-9] INFO  [LogAspect.java:68] - 处理请求[admin/getVarCode]耗时(毫秒):338
+2022-08-18 17:59:52.770 [http-nio-8500-exec-9] INFO  [ResultHandler.java:24] - 接口返回={"code":100000,"data":{"varCode":"data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAeAGQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0JalUVGoqVRQA9RUq1i+Jb19P8PXVzHL5ToB8/cDI3Ee4XJrzPR9O8beKbRbu31Z47N2OxpJMEYJwOP8AdH6V6OFy916TrSmoRTtd338rJkSnZ2seyvcwQxNJJKqooyTnt2rMTxbpTSuqTGRFDEPGNwbbkMeOigjBY4Ge+OawtJ8Ay2loIbvUnuT94sR8wccIVY8rtHp6msjxV8PrKy8PTz28wE8fMRkkwFVcnHPZV3N68d+lOhh8JOr7OVR6uyaWn4/1YG5JXsepwyLNEkiHKuAwPsanUV5L8MPF7nTru21ObH2cNKGdwBtUZIVSR2yTtGBjnGRnrLTxFqOpwXF0lnPBbI+1Soy+PKMm4juCCuB1ywFTistrYerOnL7PUIzTVzs1FSLXnzeOY4PBt/q0Nx54jgQ2wKkO2W8rec8n95n/AL5z3q//AMIzqw0Y3S3ssmtgKxBmKRuQMEcdARWbwc4K9V8utte6tf0tdXHzX2O3UVKorP0f7d/ZNt/aQUXpQGYIcgN3ArRUVySVnYoeBxRSgcUUgOKUVIopi1KtAHOeOrG+v/DU0OnwGeZsrsB7EEE/hXndtrPjjw5aC0jso7eIEH5oh6Y6n2X+den+KNebw3pa6h5ImjDiNkzg5PQivPvGHxEi1PQfsdtZPHJcKA7SYIA68fl+tfR5M604xoeyjOEpbv8A4fovIxqW3udN4Z8cyXGiPf6k6+VDGpZthBdsEEKTwTnH5GuPu9R8R/Ee+eO0WSHTAxT5QOh9ckZOB0z6j2qPVtAnsPCGlWSzq0l+5kJ3EKDjOCCD+mOSaqSvrvhHTohLLaSQJ/qwgDkNnIJ3oQQDz2I7EV6mEwdKEp1sKk5uTUb7JLr6kSk9pbHby+AZ9I8JSrHP5si/vZUVGzKQQRk78Y4weOR6VoweKraz8DuLaOWVkEiB8EKpzkdOw3YA9FpnhDxrc6x4Wvr+ZZHktJFV0lZCGBHQEKOPYjPua0NatrG70pUis0QPG88ueAAoBJUDv2HoM14VWdT2zpYxXald2t8zVJWvE81eylOi2umSPIIBJt89UIlaPOYgVPRS5JHr16V6FrelXHhzweNasb2ePULVBLNL5xYTHABVsnBGc/Sr0vguHUPCkdtHP5M4zIHVcKrEcYH+z0Hpz61najJqWo6VbaJdraGRAxLgkoxVcDIx3yc9evtXT9aeIlFxeik+ZevXzv8A0ieWx6DouopqumxXK4DEYkUdFbHIrUUVh+FNOTS/DNhaq27EKsWxgsSM8/pW6tfP1ElNqO1zVDwOKKUDiioGf//Z","varCodeId":"sonftzzrdjpncbxlzjwstkiuf"},"message":"success"}
