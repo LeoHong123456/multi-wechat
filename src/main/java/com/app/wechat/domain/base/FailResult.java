@@ -1,5 +1,6 @@
 package com.app.wechat.domain.base;
 
+import com.app.wechat.domain.enums.RestCodeEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +38,11 @@ public class FailResult implements Serializable {
     public FailResult(Integer code, Object message) {
         this.code = code;
         this.message = message;
+    }
+
+    public FailResult(RestCodeEnum restCodeEnum) {
+        this.code = restCodeEnum.code();
+        this.message = restCodeEnum.message();
     }
 
     public FailResult(Integer code, Object message, String enumType) {

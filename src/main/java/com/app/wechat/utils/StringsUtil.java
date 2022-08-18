@@ -25,7 +25,7 @@ public class StringsUtil {
         return billno.toString();
     }
 
-    public static synchronized String getRandomNum() {
+    public static synchronized String reportId() {
         SimpleDateFormat oFormat;
         startVaue++;
         startVaue = startVaue % 1000;

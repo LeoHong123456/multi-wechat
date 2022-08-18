@@ -44,7 +44,11 @@ public class LogAspect {
         String path = request.getRequestURL().toString();
         String header = request.getHeader("User-Agent");
         String contentType = request.getContentType();
-        String requestArgs = JSONObject.toJSONString(joinPoint.getArgs());
+        String requestArgs = null;
+        if(!StringUtils.contains(contentType,"multipart/form-data")){
+            requestArgs = JSONObject.toJSONString(joinPoint.getArgs());
+        }
+
         log.info("请求来源:{}", ip);
         log.info("请求URL:{}", path);
         log.info("请求方式:{}", method);

@@ -54,6 +54,6 @@ public class UserController {
     @RequestMapping(value = "/index")
     public String index(Model model) throws Exception{
         model.addAttribute("name","admin");
-        return "login";
+        return "index";
     }
 }

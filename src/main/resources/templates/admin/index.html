@@ -73,14 +73,14 @@
     </div>
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-            <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="test">
+            <ul class="layui-nav layui-nav-tree site-demo-nav">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">
                         <i class="fa fa-weixin"></i>
                         <cite>微信管理</cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd>
+                        <dd class="layui-this">
                             <a data-id="wechatUpload" href="javascript:;">
                                 <i class="fa fa-cloud-upload-alt"></i>
                                 <cite>上传文件</cite>
@@ -131,19 +131,24 @@
             </ul>
         </div>
     </div>
-    <div class="layui-body"></div>
+    <div class="layui-body">
+        <iframe class="frame-page" src="" frameborder="0" style="width: 100%;height: 100%"></iframe>
+    </div>
     <div class="layui-footer">
         <p>© 2018-2022 微信多开 Apache License 2.0</p>
     </div>
 </div>
 
 <script th:src="@{/admin/layui/layui.js}"></script>
-<script th:src="@{/admin/js/jquery.min.js}"></script>
+<!--<script th:src="@{/admin/js/jquery.min.js}"></script>-->
 <script>
     window.addEventListener("load", function(){
         let pathName = window.location.pathname.substring(1);
         let webName = pathName == '' ? '': pathName.substring(0, pathName.indexOf('/'))
         const BASE_URL = window.location.protocol + '//' + window.location.host + '/'+ webName + '/';
+
+        let framePage = document.querySelector(".frame-page");
+        framePage.src = BASE_URL.concat("/admin/upload");
 
         layui.use(['element', 'layer','jquery', 'util'], function () {
             var element = layui.element, layer = layui.layer, util = layui.util, $ = layui.jquery;
@@ -162,7 +167,7 @@
                     success: function(response){
                         if(response.code === 100000){
                             layer.msg(response.message,{icon:6});
-                            window.top.location.href = "login";
+                            window.top.location.href = BASE_URL.concat("/login");
                         }else{
                             layer.msg(response.message,{icon:5})
                         }
@@ -173,7 +178,6 @@
                 });
                 layer.close(loading);
             });
-
             $(".close-button").on('click',()=>{
                 $(".chang-pwd").fadeOut();
             })
@@ -199,11 +203,11 @@
                         if (data.code === 100000) {
                             layer.msg('密码修改成功', {icon : 6,time : 2000}, function() {
                                 $(".chang-pwd").fadeOut();
-                                window.top.location.href = "login";
+                                window.top.location.href = BASE_URL.concat("/login");
                             });
                         }else if(data.code === 100006){
                             layer.msg(data.message, {icon : 5},function(){
-                                window.top.location.href = "login";
+                                window.top.location.href = BASE_URL.concat("/login");
                             });
                         }else {
                             layer.msg(data.message, {icon : 5});
@@ -213,6 +217,7 @@
                 layer.close(loading);
             });
         });
+
     });
 </script>
 </body>
