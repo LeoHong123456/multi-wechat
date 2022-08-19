@@ -21,14 +21,15 @@ public class UploadController {
     }
     @ResponseBody
     @PostMapping(value="/receive")
-    public Result<Object> receiveFile(@RequestParam("file")MultipartFile file, @RequestParam("fileName") String fileName, @RequestParam("sign") String sign,HttpServletRequest request) throws Exception{
+    public Result<Object> receiveFile(@RequestParam("file")MultipartFile file, @RequestParam("fileName") String fileName,
+                                      @RequestParam("sign") String sign, String memo, HttpServletRequest request) throws Exception{
         if(file.isEmpty()){
             return Result.failure(RestCodeEnum.FILE_UPLOAD_IS_NULL);
         }
         Resource applicationProperties = new ClassPathResource("application.properties");
         String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
         File uploadFileSaveDir = new File(uploadFileSavePath);
-        System.out.println("上传文件的存放目录："+uploadFileSaveDir.getAbsolutePath());
+        log.info("fileName:{}, sign:{},memo:{}", fileName, sign, memo);
         if(!uploadFileSaveDir.exists()){
             uploadFileSaveDir.mkdirs();
         }
