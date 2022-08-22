@@ -37,4 +37,10 @@ public class StringsUtil {
         String id = sDate + sStartVaue;
         return id;
     }
+
+    public static synchronized String incrementId() {
+        Date oToday = new Date();
+        SimpleDateFormat oFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        return oFormat.format(oToday);
+    }
 }

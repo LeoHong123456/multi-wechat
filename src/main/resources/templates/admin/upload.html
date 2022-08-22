@@ -54,6 +54,7 @@
     layui.use(['upload', 'element', 'layer', 'layedit'], function () {
         var $ = layui.jquery, upload = layui.upload,element = layui.element,layer = layui.layer, layedit = layui.layedit;
         var memo, textIndex;
+        var session = JSON.parse(sessionStorage.getItem("multi_session"));
         var uploadListIns = upload.render({
             elem: '#testList'
             ,elemList: $('#demoList')
@@ -64,7 +65,9 @@
             ,auto: false
             ,drag:true
             ,data:{
-                "fileName":"test.text",
+                "operator": function(){
+                    return session.username;
+                },
                 "sign":function(){
                     return $("#sign").val();
                 },

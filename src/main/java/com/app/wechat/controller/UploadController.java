@@ -1,12 +1,19 @@
 package com.app.wechat.controller;
+
+import com.app.wechat.contants.BaseConstant;
 import com.app.wechat.domain.base.Result;
+import com.app.wechat.domain.dto.UploadDto;
 import com.app.wechat.domain.enums.RestCodeEnum;
+import com.app.wechat.service.IUploadService;
+import com.app.wechat.utils.StringsUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
@@ -14,29 +21,34 @@ import java.io.File;
 @Controller
 @RequestMapping(value = "/admin")
 public class UploadController {
+    @Autowired
+    private IUploadService uploadService;
+
     @GetMapping(value = "/upload")
     public String upload() throws Exception{
-        log.info(System.getProperty("user.dir"));
         return "upload";
     }
+
     @ResponseBody
     @PostMapping(value="/receive")
-    public Result<Object> receiveFile(@RequestParam("file")MultipartFile file, @RequestParam("fileName") String fileName,
-                                      @RequestParam("sign") String sign, String memo, HttpServletRequest request) throws Exception{
+    public Result<Object> receiveFile(@RequestParam("file")MultipartFile file, @RequestParam("operator") String operator, @RequestParam("sign") String sign, String memo, HttpServletRequest request) throws Exception{
+        log.info("operator:{}, sign:{}, memo:{}", operator, sign, memo);
         if(file.isEmpty()){
             return Result.failure(RestCodeEnum.FILE_UPLOAD_IS_NULL);
         }
-        Resource applicationProperties = new ClassPathResource("application.properties");
-        String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
-        File uploadFileSaveDir = new File(uploadFileSavePath);
-        log.info("fileName:{}, sign:{},memo:{}", fileName, sign, memo);
+        String fileDirId = StringsUtil.reportId();
+        File uploadFileSaveDir = new File(BaseConstant.PROFILE.concat(fileDirId).concat(File.separator));
         if(!uploadFileSaveDir.exists()){
             uploadFileSaveDir.mkdirs();
         }
-        String filename = file.getOriginalFilename();
-        File uploadFile = new File(uploadFileSaveDir.getAbsolutePath() + File.separator + filename);
-        log.info("文件上传到：{}",uploadFile.getAbsolutePath());
+        String fileName = file.getOriginalFilename();
+        String filePath = uploadFileSaveDir.getAbsolutePath() + File.separator + fileName;
+        File uploadFile = new File(filePath);
         file.transferTo(uploadFile);
+        log.info("文件上传路径：{}",uploadFileSaveDir.getAbsolutePath());
+        String incrementId = StringsUtil.incrementId();
+        UploadDto uploadDto = new UploadDto(incrementId, fileName, filePath, operator, sign, memo);
+        uploadService.saveFile(uploadDto);
         return Result.success(RestCodeEnum.FILE_UPLOAD_SUCCESS);
     }
 
@@ -92,3 +104,4 @@ public class UploadController {
         return "File name, " + filesMark + " uploaded success!";
     }
 }
+

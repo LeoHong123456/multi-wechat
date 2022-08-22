@@ -207,6 +207,10 @@ public class RedisUtils {
         return set.members(key);
     }
 
+    public static Set<Object> keys(String pattern, RedisTemplate redisTemplate){
+        return redisTemplate.keys(pattern);
+    }
+
     /**
      * 有序集合添加
      *
