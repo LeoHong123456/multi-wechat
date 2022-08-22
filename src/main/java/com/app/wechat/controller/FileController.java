@@ -1,14 +1,12 @@
 package com.app.wechat.controller;
 
-import com.app.wechat.domain.base.Result;
-import com.app.wechat.domain.vo.FileVo;
+import com.app.wechat.domain.base.PageResult;
 import com.app.wechat.service.IFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -18,11 +16,12 @@ public class FileController {
 
     @GetMapping(value = "/list")
     public String upload() throws Exception{
-        return "admin/list";
+        return "list";
     }
 
+    @ResponseBody
     @GetMapping(value = "/wechatList")
-    public Result<List<FileVo>> wechatList() throws Exception{
+    public PageResult wechatList() throws Exception{
         return fileService.wechatList();
     }
 }
