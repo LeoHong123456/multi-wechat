@@ -45,7 +45,7 @@ public class LogAspect {
         String header = request.getHeader("User-Agent");
         String contentType = request.getContentType();
         String requestArgs = null;
-        if(!StringUtils.contains(contentType,"multipart/form-data")){
+        if(!StringUtils.contains(contentType,"multipart/form-data") && !path.contains("receive") && !path.contains("fetch")){
             requestArgs = JSONObject.toJSONString(joinPoint.getArgs());
         }
 

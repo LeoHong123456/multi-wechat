@@ -26,6 +26,12 @@ public class UserController {
     @Resource
     private IUserService userService;
 
+    @GetMapping(value = "/login")
+    public String login() throws Exception{
+        return "login";
+    }
+
+
     @ResponseBody
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> login(LoginDto userDto) throws Exception{

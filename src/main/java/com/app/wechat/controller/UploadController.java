@@ -1,5 +1,4 @@
 package com.app.wechat.controller;
-
 import com.app.wechat.contants.BaseConstant;
 import com.app.wechat.domain.base.Result;
 import com.app.wechat.domain.dto.UploadDto;
@@ -13,7 +12,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
@@ -56,12 +54,9 @@ public class UploadController {
     @PostMapping(value="/receiveFileMulti1")
     public String receiveFile(@RequestParam("file1")MultipartFile file1, @RequestParam("file2")MultipartFile file2, @RequestParam() String filesMark, HttpServletRequest request) throws Exception{
         Resource applicationProperties = new ClassPathResource("application.properties");
-        //然后通过取其父目录获得resources目录，设置上传文件的目录
         String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
         File uploadFileSaveDir = new File(uploadFileSavePath);
-        System.out.println("上传文件的存放目录："+uploadFileSaveDir.getAbsolutePath());
         if(!uploadFileSaveDir.exists()){
-            // 递归生成文件夹
             uploadFileSaveDir.mkdirs();
         }
         if(file1.isEmpty()){

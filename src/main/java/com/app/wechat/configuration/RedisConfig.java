@@ -1,5 +1,4 @@
 package com.app.wechat.configuration;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import org.springframework.data.redis.connection.lettuce.LettucePoolingClientCon
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.integration.redis.util.RedisLockRegistry;
-
 import javax.annotation.PostConstruct;
 import java.time.Duration;
 import java.util.HashMap;
@@ -85,11 +83,6 @@ public class RedisConfig {
     private RedisTemplate<String, Object> createRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(redisConnectionFactory);
-/*        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        jackson2JsonRedisSerializer.setObjectMapper(om);*/
         //String的序列化
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         //key采用String的序列化方式
@@ -100,10 +93,6 @@ public class RedisConfig {
         template.setValueSerializer(stringRedisSerializer);
         //hash序列化方式采用jackson
         template.setHashValueSerializer(stringRedisSerializer);
-/*        //value序列化方式采用jackson
-        template.setValueSerializer(jackson2JsonRedisSerializer);
-        //hash序列化方式采用jackson
-        template.setHashValueSerializer(jackson2JsonRedisSerializer);*/
         template.afterPropertiesSet();
         return template;
     }

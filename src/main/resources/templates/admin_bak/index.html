@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/favicon.webp" th:href="@{favicon.webp}"/>
+    <link rel="stylesheet" th:href="@{/admin_bak/css/index.css}">
+    <link rel="stylesheet" th:href="@{/admin_bak/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/admin_bak/fontawesome/css/all.min.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-hide-xs layui-bg-black">
+            <i class="admin-logo fa fa-weixin"></i>
+            <span>微信多开后台管理</span>
+        </div>
+        <ul class="layui-nav layui-layout-left" lay-filter="nav">
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="upload.html">文件上传</a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="">下载记录</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                <a href="javascript:;">
+                    <img th:src="@{/admin_bak/image/avatar.jpg}" class="layui-nav-img">
+                    admin
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a id="changPwd" href="javascript:;">修改密码</a></dd>
+                    <dd><a id="loginOut" href="javascript:;">登出</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="chang-pwd">
+            <div class="close-button"></div>
+            <h1>修改密码</h1>
+            <form class="layui-form" method="post">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">原密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="oldPwd" name="oldPwd" lay-verify="title" autocomplete="off" placeholder="请输入原密码" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" id="password" name="password" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" id="changePwdBtn" class="layui-btn">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="nav-list">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">
+                        <i class="fa fa-weixin"></i>
+                        <cite>微信管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this">
+                            <a data-page="admin/upload" href="javascript:;">
+                                <i class="fa fa-cloud-upload-alt"></i>
+                                <cite>上传文件</cite>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a data-page="admin/list" href="javascript:;">
+                                <i class="fa fa-file"></i>
+                                <cite>文件列表</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">
+                        <i class="fa fa-tiktok"></i>
+                        <cite>抖音管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a data-id="tiktok-upload" href="javascript:;">
+                                <i class="fa fa-cloud-upload-alt"></i>
+                                <cite>上传文件</cite>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a data-id="tiktok-list" href="javascript:;">
+                                <i class="fa fa-file"></i>
+                                <cite>文件列表</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" >
+                    <a href="javascript:;">
+                        <i class="fa fa-cloud-download-alt"></i>
+                        <cite>下载管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a data-id="download-list" href="javascript:;">
+                                <i class="fa fa-list-alt"></i>
+                                <cite>下载记录</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!--    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree site-demo-nav">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">
+                        <i class="fa fa-weixin"></i>
+                        <cite>微信管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this">
+                            <a data-id="wechatUpload" href="javascript:;">
+                                <i class="fa fa-cloud-upload-alt"></i>
+                                <cite>上传文件</cite>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a data-id="wechat-list" href="javascript:;">
+                                <i class="fa fa-file"></i>
+                                <cite>文件列表</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">
+                        <i class="fa fa-tiktok"></i>
+                        <cite>抖音管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a data-id="tiktok-upload" href="javascript:;">
+                                <i class="fa fa-cloud-upload-alt"></i>
+                                <cite>上传文件</cite>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a data-id="tiktok-list" href="javascript:;">
+                                <i class="fa fa-file"></i>
+                                <cite>文件列表</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" >
+                    <a href="javascript:;">
+                        <i class="fa fa-cloud-download-alt"></i>
+                        <cite>下载管理</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a data-id="download-list" href="javascript:;">
+                                <i class="fa fa-list-alt"></i>
+                                <cite>下载记录</cite>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="layui-body">
+        <iframe class="frame-page" src="" frameborder="0" style="width: 100%;height: 100%"></iframe>
+    </div>
+    <div class="layui-footer">
+        <p>© 2018-2022 微信多开 Apache License 2.0</p>
+    </div>
+</div>
+
+<script th:src="@{/admin_bak/layui/layui.js}"></script>
+<script>
+    window.addEventListener("load", function(){
+        let pathName = window.location.pathname.substring(1);
+        let webName = pathName == '' ? '': pathName.substring(0, pathName.indexOf('/'))
+        const BASE_URL = window.location.protocol + '//' + window.location.host + '/'+ webName + '/';
+        let framePage = document.querySelector(".frame-page");
+        framePage.src = BASE_URL.concat("/admin/upload");
+        layui.use(['element', 'layer','jquery', 'util'], function () {
+            var element = layui.element, layer = layui.layer, util = layui.util, $ = layui.jquery;
+            element.on('nav(nav-list)', function(elem){
+                framePage.src = BASE_URL.concat($(elem).attr("data-page"));
+            });
+            /*util.event('lay-header-event', {
+                menuLeft: function (othis) {
+                    console.dir(othis)
+                }
+            });*/
+            $('#loginOut').on('click', function(){
+                var loading = layer.load(0,{shade:true, time:2000});
+                let session = JSON.parse(sessionStorage.getItem('multi_session'));
+                $.ajax({
+                    url: BASE_URL + "/admin/loginOut",
+                    method: "post",
+                    data: 'username='+session.username+'&sessionId='+ session.sessionId,
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.code === 100000){
+                            layer.msg(response.message,{icon:6});
+                            window.top.location.href = BASE_URL.concat("/login");
+                        }else{
+                            layer.msg(response.message,{icon:5})
+                        }
+                    },
+                    error: function(response){
+                        layer.msg(response.message,{icon:5});
+                    }
+                });
+                layer.close(loading);
+            });
+            $(".close-button").on('click',()=>{
+                $(".chang-pwd").fadeOut();
+            })
+            $("#changPwd").on('click',()=>{
+                $("#oldPwd").val("");
+                $("#password").val("");
+                $(".chang-pwd").fadeIn();
+            });
+            $('#changePwdBtn').on('click', function(){
+                let session = JSON.parse(sessionStorage.getItem('multi_session'));
+                var loading = layer.load(0,{shade:true});
+                $.ajax({
+                    type : "POST",
+                    url : BASE_URL + "/admin/changPassword",
+                    data : 'username='+session.username+'&sessionId='+session.sessionId+'&oldPwd='+$("#oldPwd").val()+'&password='+$("#password").val(),
+                    async : true,
+                    dataType : 'json',
+                    error : function(data) {
+                        layer.msg(data.message, {icon : 5});
+                        $(".chang-pwd").fadeOut();
+                    },
+                    success : function(data) {
+                        if (data.code === 100000) {
+                            layer.msg('密码修改成功', {icon : 6,time : 2000}, function() {
+                                $(".chang-pwd").fadeOut();
+                                window.top.location.href = BASE_URL.concat("/login");
+                            });
+                        }else if(data.code === 100006){
+                            layer.msg(data.message, {icon : 5},function(){
+                                window.top.location.href = BASE_URL.concat("/login");
+                            });
+                        }else {
+                            layer.msg(data.message, {icon : 5});
+                        }
+                    }
+                });
+                layer.close(loading);
+            });
+        });
+    });
+</script>
+</body>
+</html>

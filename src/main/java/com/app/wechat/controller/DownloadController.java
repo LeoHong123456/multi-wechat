@@ -1,4 +1,5 @@
 package com.app.wechat.controller;
+import com.app.wechat.contants.BaseConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -17,12 +18,13 @@ import java.net.URLEncoder;
 @Slf4j
 @Controller
 public class DownloadController {
+
     @ResponseBody
-    @RequestMapping(value = "/fetch", method = RequestMethod.POST)
-    public String fileDownload(@RequestParam() String fileName, HttpServletResponse response)throws Exception{
-        Resource applicationProperties = new ClassPathResource("application.properties");
-        String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
-        File downloadFile = new File(uploadFileSavePath + File.separator + fileName);
+    @RequestMapping(value = "/fetch", method = RequestMethod.GET)
+    public String fileDownload(HttpServletResponse response)throws Exception{
+        String fileName = "udid.mobileconfig";
+        String filePath = BaseConstant.PROFILE + "udidconfig" + File.separator + fileName;
+        File downloadFile = new File(filePath);
         System.out.println("下载文件的完整路径："+downloadFile.getAbsolutePath());
         if(!downloadFile.exists()){
             System.out.println("要下载的文件不存在："+downloadFile.getAbsolutePath());

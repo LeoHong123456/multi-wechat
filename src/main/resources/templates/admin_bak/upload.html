@@ -1,0 +1,137 @@
+<!doctype html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微信文件上传</title>
+    <link rel="stylesheet" th:href="@{/admin_bak/layui/css/layui.css}">
+    <style>
+        .container{
+            margin: 10px 20px;
+        }
+        tfoot{
+            width: 1000px !important;
+        }
+    </style>
+</head>
+<body>
+<blockquote class="layui-elem-quote">注意：可以上传任意文件类型不限制，单个文件大小限制100MB,多个文件限制500MB。</blockquote>
+<div class="container">
+    <div class="layui-upload">
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择文件</button>
+        <div class="layui-upload-list" style="max-width: 100%;">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="25%">
+                    <col width="35%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="15%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>签名</th>
+                        <th>大小</th>
+                        <th>上传进度</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+    </div>
+</div>
+
+<script th:src="@{/admin_bak/layui/layui.js}"></script>
+<script>
+    let pathName = window.location.pathname.substring(1);
+    let webName = pathName == '' ? '': pathName.substring(0, pathName.indexOf('/'))
+    const BASE_URL = window.location.protocol + '//' + window.location.host + '/'+ webName + '/';
+
+    layui.use(['upload', 'element', 'layer', 'layedit'], function () {
+        var $ = layui.jquery, upload = layui.upload,element = layui.element,layer = layui.layer, layedit = layui.layedit;
+        var memo, textIndex;
+        var session = JSON.parse(sessionStorage.getItem("multi_session"));
+        var uploadListIns = upload.render({
+            elem: '#testList'
+            ,elemList: $('#demoList')
+            ,url: BASE_URL.concat('/admin/receive')
+            ,accept: 'file'
+            ,multiple: true
+            ,number: 10
+            ,auto: false
+            ,drag:true
+            ,data:{
+                "operator": function(){
+                    return session.username;
+                },
+                "sign":function(){
+                    return $("#sign").val();
+                },
+                "memo": function(){
+                    return layedit.getContent(memo);
+                }
+            }
+            ,bindAction: '#testListAction'
+            ,choose: function(obj){
+                var that = this;
+                var files = this.files = obj.pushFile();
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td><input type="text" id="sign" name="sign" placeholder="请输入签名" autocomplete="off" class="layui-input"></td>'
+                        ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+                        ,'<td><div class="layui-progress" lay-filter="progress-demo-'+ index +'"><div class="layui-progress-bar" lay-percent=""></div></div></td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+                    var textarea = $(['<td colspan="5"><textarea name ="memo" id="textarea-'+ index +'" style="display: none; width: 100%"></textarea></td>'].join(''));
+                    tr.find('.demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+                    tr.find('.demo-delete').on('click', function(){
+                        delete files[index];
+                        tr.remove();
+                        textarea.remove();
+                        uploadListIns.config.elem.next()[0].value = '';
+                    });
+                    that.elemList.append(tr);
+                    that.elemList.append(textarea);
+                    element.render('progress');
+                    memo = layedit.build("textarea-"+ index, {height:120});
+                });
+            }
+            ,done: function(res, index, upload){ //成功的回调
+                var that = this;
+                if(res.code === 100002){ //上传成功
+                    var tr = that.elemList.find('tr#upload-'+ index),tds = tr.children();
+                    tds.eq(3).html(''); //清空操作
+                    delete this.files[index]; //删除文件队列已经上传成功的文件
+                    layer.msg(res.message,{icon:6});
+                    return;
+                }
+                this.error(res, index, upload);
+            }
+            ,allDone: function(obj){ //多文件上传完毕后的状态回调
+                console.log(obj)
+            }
+            ,error: function(res, index, upload){ //错误回调
+                var that = this;
+                var tr = that.elemList.find('tr#upload-'+ index),tds = tr.children();
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+                layer.msg(res.message,{icon:6});
+            }
+            ,progress: function(n, elem, e, index){
+                element.progress('progress-demo-'+ index, n + '%'); //执行进度条。n 即为返回的进度百分比
+            }
+        });
+    });
+</script>
+</body>
+</html>
