@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
         log.error("request param exception!", ex);
         String messageEnum = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
         if (StringUtils.containsIgnoreCase(messageEnum, "Failed to convert property value of type")) {
-            return FailResult.failure(RestCodeEnum.GLOBAL_FAIL.name(), ex.getLocalizedMessage());
+            return FailResult.failure(RestCodeEnum.FAIL_TO_REQUEST_PARAM.name(), ex.getLocalizedMessage());
         } else {
             return FailResult.failure(messageEnum, ex.getLocalizedMessage());
         }
