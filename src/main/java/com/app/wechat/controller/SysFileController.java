@@ -67,36 +67,10 @@ public class SysFileController {
         fileService.saveFile(receiveBo);
         return Result.success(RestCodeEnum.FILE_UPLOAD_SUCCESS);
     }
-    @ApiOperation(value = "双文件上传(V)", notes = "双文件上传")
-    @ApiParam(name = "ReceiveDto", value = "双文件上传参数实体", required = true)
-    @PostMapping(value="/receiveMulti")
-    public String receiveFile(@RequestParam("file1")MultipartFile file1, @RequestParam("file2")MultipartFile file2, @RequestParam() String filesMark, HttpServletRequest request) throws Exception{
-        Resource applicationProperties = new ClassPathResource("application.properties");
-        String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
-        File uploadFileSaveDir = new File(uploadFileSavePath);
-        if(!uploadFileSaveDir.exists()){
-            uploadFileSaveDir.mkdirs();
-        }
-        if(file1.isEmpty()){
-            return "file1没有选中任何文件！";
-        }
-        String filename = file1.getOriginalFilename();
-        File uploadFile = new File(uploadFileSaveDir.getAbsolutePath() + File.separator + filename);
-        System.out.println("文件上传到：" + uploadFile.getAbsolutePath());
-        file1.transferTo(uploadFile);
-        if(file2.isEmpty()){
-            return "file2没有选中任何文件！";
-        }
-        filename = file2.getOriginalFilename();
-        uploadFile = new File(uploadFileSaveDir.getAbsolutePath() + File.separator + filename);
-        System.out.println("文件上传到：" + uploadFile.getAbsolutePath());
-        file2.transferTo(uploadFile);
-        return "File name, " + filesMark + " uploaded success!";
-    }
 
     @ApiOperation(value = "多文件上传(V)", notes = "多文件上传")
     @ApiParam(name = "MultiReceiveDto", value = "双文件上传参数实体", required = true)
-    @PostMapping(value="/receiveMultis")
+    @PostMapping(value="/receiveMultis" , produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> receiveFile(@Valid @ModelAttribute ReceiveMultiDto receiveMultiDto) throws Exception{
         MultipartFile[] files = receiveMultiDto.getFiles();
         String fileDirId = StringsUtil.getFileDirId();
@@ -129,6 +103,32 @@ public class SysFileController {
         return Result.success();
     }
 
+    @ApiOperation(value = "双文件上传(V)", notes = "双文件上传")
+    @ApiParam(name = "ReceiveDto", value = "双文件上传参数实体", required = true)
+    @PostMapping(value="/receiveMulti")
+    public String receiveFile(@RequestParam("file1")MultipartFile file1, @RequestParam("file2")MultipartFile file2, @RequestParam() String filesMark, HttpServletRequest request) throws Exception{
+        Resource applicationProperties = new ClassPathResource("application.properties");
+        String uploadFileSavePath = applicationProperties.getFile().getParentFile().getAbsolutePath() + File.separator + "static/upload";
+        File uploadFileSaveDir = new File(uploadFileSavePath);
+        if(!uploadFileSaveDir.exists()){
+            uploadFileSaveDir.mkdirs();
+        }
+        if(file1.isEmpty()){
+            return "file1没有选中任何文件！";
+        }
+        String filename = file1.getOriginalFilename();
+        File uploadFile = new File(uploadFileSaveDir.getAbsolutePath() + File.separator + filename);
+        System.out.println("文件上传到：" + uploadFile.getAbsolutePath());
+        file1.transferTo(uploadFile);
+        if(file2.isEmpty()){
+            return "file2没有选中任何文件！";
+        }
+        filename = file2.getOriginalFilename();
+        uploadFile = new File(uploadFileSaveDir.getAbsolutePath() + File.separator + filename);
+        System.out.println("文件上传到：" + uploadFile.getAbsolutePath());
+        file2.transferTo(uploadFile);
+        return "File name, " + filesMark + " uploaded success!";
+    }
 
     @ResponseBody
     @RequestMapping(value = "/fetch", method = RequestMethod.GET)
