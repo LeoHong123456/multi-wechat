@@ -7,13 +7,13 @@ import com.app.wechat.utils.JSONUtil;
 import com.app.wechat.utils.RedisUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 
 @Service
 public class UploadServiceImpl implements IUploadService {
     @Resource
     private RedisConfig redisConfig;
+
     @Override
     public void saveFile(UploadDto uploadDto) {
         String id = uploadDto.getId();

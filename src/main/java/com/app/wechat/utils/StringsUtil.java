@@ -38,6 +38,12 @@ public class StringsUtil {
         return id;
     }
 
+    public static synchronized String getFileDirId() {
+        Date oToday = new Date();
+        SimpleDateFormat oFormat = new SimpleDateFormat("yyyyMMdd");
+        return oFormat.format(oToday);
+    }
+
     public static synchronized String incrementId() {
         Date oToday = new Date();
         SimpleDateFormat oFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");

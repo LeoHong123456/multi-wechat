@@ -1,3 +1,4 @@
+/*
 package com.app.wechat.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.dom4j.*;
@@ -6,15 +7,17 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-
+List
 @Slf4j
 public class XmlUtil {
 	private SAXReader reader;
 	private Document document;
 
-	/**
+	*/
+/**
 	 *  sample : /result/@info <===> <result info="">
-	 */
+	 *//*
+
 	@SuppressWarnings("unchecked")
 	public List<Node> getAttribute(String xpath) {
 		if (reader == null) {
@@ -23,9 +26,11 @@ public class XmlUtil {
 		return document.selectNodes(xpath);
 	}
 
-	/**
+	*/
+/**
 	 * sample : /response/errcode <===> <response><errcode>12321</errcode></response> 
-	 */
+	 *//*
+
 	@SuppressWarnings("unchecked")
 	public List<Node> getSelectNodes(String xpath) {
 		if (reader == null) {
@@ -44,3 +49,4 @@ public class XmlUtil {
 	}
 
 }
+*/
