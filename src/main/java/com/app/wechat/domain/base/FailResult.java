@@ -2,7 +2,6 @@ package com.app.wechat.domain.base;
 
 import com.app.wechat.domain.enums.RestCodeEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,31 +10,21 @@ import java.io.Serializable;
  * @author Administrator
  */
 @Data
-@AllArgsConstructor
-public class FailResult implements Serializable {
-    private static final long serialVersionUID = -5240069820604311741L;
-
-    @JsonIgnore
-    private String enumType;
-
+public class FailResult<T> implements Serializable {
     @JsonIgnore
     private Object exception;
-
     private Integer code;
-    private Object message;
+    private String message;
+    private T data;
 
-    public FailResult(String enumType, String exception) {
-        this.enumType = enumType;
+    public FailResult(Object exception, Integer code, String message, T data) {
         this.exception = exception;
-    }
-
-    public FailResult(Integer code, Object message, Object exception) {
         this.code = code;
         this.message = message;
-        this.exception = exception;
+        this.data = data;
     }
 
-    public FailResult(Integer code, Object message) {
+    public FailResult(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -45,13 +34,17 @@ public class FailResult implements Serializable {
         this.message = restCodeEnum.message();
     }
 
-    public FailResult(Integer code, Object message, String enumType) {
+    public FailResult(Integer code, String message,T data) {
         this.code = code;
         this.message = message;
-        this.enumType = enumType;
+        this.data = data;
     }
 
-    public static FailResult failure(String enumType, String exception) {
-        return new FailResult(enumType, exception);
+    public static FailResult failure(Integer code ,String message){
+        return new FailResult(code, message);
+    }
+
+    public static <T> FailResult failure(Integer code, String message, T data){
+        return new FailResult(code, message, data);
     }
 }

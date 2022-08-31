@@ -34,5 +34,5 @@ public class ReceiveDto implements Serializable {
     @NotNull(message = "是否上架不能为空")
     @Min(value = 1, message = "请填写正确上架参数")
     @Max(value = 2, message = "请填写正确上架参数")
-    private Integer isOnline;
+    private Integer fileOnline;
 }

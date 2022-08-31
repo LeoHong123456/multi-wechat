@@ -9,7 +9,7 @@ public class ReceiveBo implements Serializable {
     private String operator;
     private String sign;
     private String memo;
-    private Integer isOnline;
+    private Integer fileOnline;
     private String fileId;
     private String fileName;
     private String filePath;
