@@ -21,7 +21,7 @@ public class Knife4jConfiguration implements WebMvcConfigurer {
                 .apiInfo(apiInfo())
                 .groupName("2.X版本")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ds"))
+                .apis(RequestHandlerSelectors.basePackage("com.app.wechat"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;

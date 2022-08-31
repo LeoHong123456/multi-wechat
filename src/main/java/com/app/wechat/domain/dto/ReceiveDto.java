@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
@@ -30,6 +32,7 @@ public class ReceiveDto implements Serializable {
 
     @ApiModelProperty(value = "是否上线", required = true, example = "1:上架,2:下架")
     @NotNull(message = "是否上架不能为空")
-    @Pattern(regexp = "^[1-2]{1}$", message = "上架参数不正确")
+    @Min(value = 1, message = "请填写正确上架参数")
+    @Max(value = 2, message = "请填写正确上架参数")
     private Integer isOnline;
 }

@@ -6,6 +6,8 @@ import com.app.wechat.domain.dto.ReceiveDto;
 import com.app.wechat.domain.enums.RestCodeEnum;
 import com.app.wechat.utils.StringsUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +34,8 @@ import java.net.URLEncoder;
 @Api(tags = "文件上传下载")
 @RestController
 public class SysFileController {
-    /*@Autowired
-    private ISysFileService fileService;*/
-
+    @ApiOperation(value = "单文件上传(V)", notes = "单文件上传")
+    @ApiParam(name = "ReceiveDto", value = "单文件上传参数实体", required = true)
     @PostMapping(value="/receive", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> receiveFile(@Valid @ModelAttribute ReceiveDto receiveDto) throws Exception{
         MultipartFile file = receiveDto.getFile();
