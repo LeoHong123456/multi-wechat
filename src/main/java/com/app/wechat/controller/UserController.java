@@ -1,36 +1,28 @@
 package com.app.wechat.controller;
 
 import com.app.wechat.domain.base.Result;
-import com.app.wechat.domain.dto.ChangPasswordDto;
+import com.app.wechat.domain.dto.ChangPwdDto;
 import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
 import com.app.wechat.domain.vo.VarCodeVo;
 import com.app.wechat.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+/**
+ * @author Administrator
+ */
 @Slf4j
-@Controller
 @Validated
+@RestController
 @RequestMapping("/admin")
 public class UserController {
     @Resource
     private IUserService userService;
-
-    @GetMapping(value = "/login")
-    public String login() throws Exception{
-        return "login";
-    }
-
 
     @ResponseBody
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -46,20 +38,14 @@ public class UserController {
 
     @ResponseBody
     @PostMapping(value = "/changPassword", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception{
-        return userService.changPassword(changPasswordDto);
+    public Result<Object> changPassword(ChangPwdDto changPwdDto) throws Exception{
+        return userService.changPassword(changPwdDto);
     }
+
 
     @ResponseBody
     @GetMapping(value = "/getVarCode", produces = MediaType.APPLICATION_JSON_VALUE)
     public Result<VarCodeVo> getVarCode() throws Exception{
         return userService.getVarCode();
-    }
-
-
-    @RequestMapping(value = "/index")
-    public String index(Model model) throws Exception{
-        model.addAttribute("name","admin");
-        return "index";
     }
 }

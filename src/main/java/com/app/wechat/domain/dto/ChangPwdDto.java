@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Data
-public class ChangPasswordDto implements Serializable {
+public class ChangPwdDto implements Serializable {
     @Pattern(regexp = "^[a-z0-9]{5,12}$", message = "会员名必须5~12位数字或字母")
     @NotBlank(message = "会员名必须5~12位数字或字母")
     private String username;

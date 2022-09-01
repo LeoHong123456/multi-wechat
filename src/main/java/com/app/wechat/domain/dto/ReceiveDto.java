@@ -35,4 +35,10 @@ public class ReceiveDto implements Serializable {
     @Min(value = 1, message = "请填写正确上架参数")
     @Max(value = 2, message = "请填写正确上架参数")
     private Integer fileOnline;
+
+    @ApiModelProperty(value = "文件类型", required = true, example = "1:微信,2:抖音,3:其它")
+    @NotNull(message = "文件类型不能为空")
+    @Min(value = 1, message = "请填写正确文件类型")
+    @Max(value = 3, message = "请填写正确文件类型")
+    private Integer fileType;
 }

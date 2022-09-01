@@ -3,7 +3,7 @@ package com.app.wechat.service.impl;
 import com.app.wechat.configuration.RedisConfig;
 import com.app.wechat.contants.CacheDbConstant;
 import com.app.wechat.domain.base.Result;
-import com.app.wechat.domain.dto.ChangPasswordDto;
+import com.app.wechat.domain.dto.ChangPwdDto;
 import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
 import com.app.wechat.domain.entity.User;
@@ -79,11 +79,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception {
-        String oldPwd = changPasswordDto.getOldPwd();
-        String password = changPasswordDto.getPassword();
-        String username = changPasswordDto.getUsername();
-        String sessionId = changPasswordDto.getSessionId();
+    public Result<Object> changPassword(ChangPwdDto changPwdDto) throws Exception {
+        String oldPwd = changPwdDto.getOldPwd();
+        String password = changPwdDto.getPassword();
+        String username = changPwdDto.getUsername();
+        String sessionId = changPwdDto.getSessionId();
         String encryptPwd = MD5Util.getMD5(MD5Util.getMD5(oldPwd)+"wechat");
         String encryptNewPwd = MD5Util.getMD5(MD5Util.getMD5(password)+"wechat");
         RedisTemplate<String, Object> redisTemplate = redisConfig.getRedisTemplateByDb(CacheDbConstant.CACHE_DB_0);

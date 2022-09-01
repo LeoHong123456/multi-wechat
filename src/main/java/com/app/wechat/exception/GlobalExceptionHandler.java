@@ -1,5 +1,4 @@
 package com.app.wechat.exception;
-
 import com.app.wechat.domain.base.FailResult;
 import com.app.wechat.domain.enums.RestCodeEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.UnexpectedTypeException;
 

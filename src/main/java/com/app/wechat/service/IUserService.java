@@ -1,6 +1,6 @@
 package com.app.wechat.service;
 
-import com.app.wechat.domain.dto.ChangPasswordDto;
+import com.app.wechat.domain.dto.ChangPwdDto;
 import com.app.wechat.domain.dto.LoginDto;
 import com.app.wechat.domain.dto.LoginOutDto;
 import com.app.wechat.domain.base.Result;
@@ -24,11 +24,11 @@ public interface IUserService {
 
     /**
      * 修改密码
-     * @param changPasswordDto
+     * @param changPwdDto
      * @return
      * @throws Exception
      */
-    Result<Object> changPassword(ChangPasswordDto changPasswordDto) throws Exception;
+    Result<Object> changPassword(ChangPwdDto changPwdDto) throws Exception;
 
     Result<VarCodeVo> getVarCode() throws Exception;
 }

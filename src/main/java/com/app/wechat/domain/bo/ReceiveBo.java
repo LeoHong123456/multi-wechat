@@ -13,4 +13,5 @@ public class ReceiveBo implements Serializable {
     private String fileId;
     private String fileName;
     private String filePath;
+    private String fileType;
 }
