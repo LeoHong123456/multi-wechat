@@ -30,12 +30,12 @@ public class ReceiveMultiDto implements Serializable {
     @ApiModelProperty(value = "备注", required = true, example = "可以包含文字图片,示例值[a,b,c]")
     private String memo;
 
-    @ApiModelProperty(value = "是否上线", required = true, dataType = "string", example = "1:上架,2:下架,示例值[1,2,3]")
+    @ApiModelProperty(value = "是否上线(1:上架,2:下架)", required = true, dataType = "string", example = "1")
     @NotNull(message = "是否上架不能为空")
     @Pattern(regexp = "^[1-2,]{1,10}$", message = "请正确填写上架参数")
     private String fileOnline;
 
-    @ApiModelProperty(value = "文件类型", required = true, example = "1:微信,2:抖音,3:其它")
+    @ApiModelProperty(value = "文件类型(1:微信,2:抖音,3:其它)", required = true, example = "1")
     @NotNull(message = "文件类型不能为空")
     @Min(value = 1, message = "请填写正确文件类型")
     @Max(value = 3, message = "请填写正确文件类型")

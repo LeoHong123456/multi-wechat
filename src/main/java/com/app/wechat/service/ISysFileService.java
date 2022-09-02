@@ -1,8 +1,11 @@
 package com.app.wechat.service;
 
 import com.app.wechat.domain.bo.ReceiveBo;
+import com.app.wechat.domain.dto.FileListDto;
 import com.app.wechat.domain.dto.QueryFileListDto;
 import com.app.wechat.domain.entity.SysFile;
+import com.app.wechat.domain.vo.FileInfoVo;
+import com.app.wechat.domain.vo.FileListVo;
 import com.app.wechat.domain.vo.QueryFileListVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -37,4 +40,19 @@ public interface ISysFileService extends IService<SysFile> {
      * @throws Exception
      */
     List<QueryFileListVo> queryFileList(QueryFileListDto queryFileListDto) throws Exception;
+
+    /**
+     * 前端获取文件列表
+     * @param fileListDto
+     * @return
+     * @throws Exception
+     */
+    List<FileListVo> getFileList(FileListDto fileListDto) throws Exception;
+
+    /**
+     * 获取文件详情
+     * @param fileId
+     * @return
+     */
+    FileInfoVo getFileInfo(String fileId) throws Exception;
 }

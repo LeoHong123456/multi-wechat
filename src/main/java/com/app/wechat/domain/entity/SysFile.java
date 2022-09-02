@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -46,7 +47,7 @@ public class SysFile implements Serializable {
     /**
      * 文件类型(1:微信，2:抖音,3:抖音)
      */
-    private String fileType;
+    private Integer fileType;
 
     /**
      * 文件状态（1：上架，2：下架）
@@ -72,6 +73,16 @@ public class SysFile implements Serializable {
      * 文件描述
      */
     private String memo;
+
+    /**
+     * 价格
+     */
+    private BigDecimal price;
+
+    /**
+     * 促销价
+     */
+    private BigDecimal promotionPrice;
 
     /**
      * 创建时间

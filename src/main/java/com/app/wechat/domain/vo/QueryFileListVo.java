@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @ApiModel
 public class QueryFileListVo implements Serializable {
 
-    @ApiModelProperty(name = "id", notes = "序列号", dataType = "int")
-    private Integer id;
+    @ApiModelProperty(name = "id", notes = "序列号", dataType = "long")
+    private Long id;
 
     @ApiModelProperty(name = "fileId", notes = "文件id", dataType = "string")
     private String fileId;
@@ -36,8 +36,11 @@ public class QueryFileListVo implements Serializable {
     @ApiModelProperty(name = "memo", notes = "文件描述", dataType = "string")
     private String memo;
 
-    @ApiModelProperty(name = "craeteTime", notes = "上传时间", dataType = "string")
-    private LocalDateTime craeteTime;
+    @ApiModelProperty(name = "version", notes = "版本号", dataType = "string")
+    private String version;
+
+    @ApiModelProperty(name = "createTime", notes = "上传时间", dataType = "string")
+    private LocalDateTime createTime;
 
     @ApiModelProperty(name = "updateTime", notes = "更新时间", dataType = "string")
     private LocalDateTime updateTime;

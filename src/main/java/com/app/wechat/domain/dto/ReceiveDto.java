@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @ApiModel(value = "ReceiveDto", description = "上传文件")
@@ -30,13 +31,25 @@ public class ReceiveDto implements Serializable {
     @ApiModelProperty(value = "备注", required = true, example = "可以包含文字图片")
     private String memo;
 
-    @ApiModelProperty(value = "是否上线", required = true, example = "1:上架,2:下架")
+    @ApiModelProperty(value = "是否上线(1:上架,2:下架)", required = true, example = "1")
     @NotNull(message = "是否上架不能为空")
     @Min(value = 1, message = "请填写正确上架参数")
     @Max(value = 2, message = "请填写正确上架参数")
     private Integer fileOnline;
 
-    @ApiModelProperty(value = "文件类型", required = true, example = "1:微信,2:抖音,3:其它")
+    @ApiModelProperty(value = "价格", required = true, example = "1")
+    @NotNull(message = "价格不能为空")
+    @Min(value = 1, message = "请填写正确价格")
+    @Max(value = 10000, message = "请填写正确价格")
+    private BigDecimal price;
+
+    @ApiModelProperty(value = "促销价格", required = true, example = "1")
+    @NotNull(message = "促销价格不能为空")
+    @Min(value = 1, message = "请填写正确的促销价格")
+    @Max(value = 10000, message = "请填写正确的促销价格")
+    private BigDecimal promotionPrice;
+
+    @ApiModelProperty(value = "文件类型(1:微信,2:抖音,3:其它)", required = true, example = "1")
     @NotNull(message = "文件类型不能为空")
     @Min(value = 1, message = "请填写正确文件类型")
     @Max(value = 3, message = "请填写正确文件类型")

@@ -1,13 +1,15 @@
-package com.app.wechat.controller;
+package com.app.wechat.controller.admin;
 
 import com.app.wechat.contants.BaseConstant;
 import com.app.wechat.domain.base.Result;
 import com.app.wechat.domain.bo.ReceiveBo;
+import com.app.wechat.domain.dto.FileListDto;
 import com.app.wechat.domain.dto.QueryFileListDto;
 import com.app.wechat.domain.dto.ReceiveDto;
 import com.app.wechat.domain.dto.ReceiveMultiDto;
 import com.app.wechat.domain.entity.SysFile;
 import com.app.wechat.domain.enums.RestCodeEnum;
+import com.app.wechat.domain.vo.FileListVo;
 import com.app.wechat.domain.vo.QueryFileListVo;
 import com.app.wechat.service.ISysFileService;
 import com.app.wechat.utils.StringsUtil;
@@ -41,18 +43,11 @@ import java.util.Objects;
  */
 @Slf4j
 @Validated
-@Api(tags = "文件上传下载")
+@Api(tags = "后台接口")
 @RestController
 public class SysFileController {
     @Autowired
     private ISysFileService fileService;
-
-    @ApiOperation(value = "文件列表(V)", notes = "文件列表")
-    @ApiParam(name = "QueryFileListDto", value = "文件列表参数实体", required = true)
-    @PostMapping(value = "/queryFileList", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Result<List<QueryFileListVo>> queryFileList(@Valid @ModelAttribute QueryFileListDto queryFileListDto) throws Exception{
-        return Result.success(fileService.queryFileList(queryFileListDto));
-    }
 
     @ApiOperation(value = "单文件上传(V)", notes = "单文件上传")
     @ApiParam(name = "ReceiveDto", value = "单文件上传参数实体", required = true)
@@ -111,32 +106,5 @@ public class SysFileController {
         }
         fileService.saveBatchFile(receives);
         return Result.success();
-    }
-
-    @ApiOperation(value = "描述文件下载(V)", notes = "描述文件下载")
-    @GetMapping(value = "/mobileFile")
-    public Result<Object> fileDownload(HttpServletResponse response) throws Exception {
-        String fileName = "udid.mobileconfig";
-        String filePath = Objects.requireNonNull(this.getClass().getClassLoader().getResource(fileName)).getPath();
-        File downFile = new File(filePath);
-        if (!downFile.exists()) {
-            return Result.failure(RestCodeEnum.FAIL_TO_PARAM_ERROR);
-        } else {
-            response.setContentType("application/force-download");
-            InputStream in = Files.newInputStream(downFile.toPath());
-            fileName = URLEncoder.encode(fileName, "UTF-8");
-            response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
-            response.setContentLength(in.available());
-            OutputStream out = response.getOutputStream();
-            byte[] b = new byte[1024];
-            int len;
-            while ((len = in.read(b)) != -1) {
-                out.write(b, 0, len);
-            }
-            out.flush();
-            out.close();
-            in.close();
-            return Result.success();
-        }
     }
 }

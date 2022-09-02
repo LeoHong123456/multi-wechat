@@ -3,6 +3,7 @@ package com.app.wechat.domain.bo;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 public class ReceiveBo implements Serializable {
@@ -14,4 +15,6 @@ public class ReceiveBo implements Serializable {
     private String fileName;
     private String filePath;
     private String fileType;
+    private BigDecimal price;
+    private BigDecimal promotionPrice;
 }
