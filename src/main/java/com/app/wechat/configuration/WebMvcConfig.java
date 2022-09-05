@@ -5,15 +5,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author Administrator
+ */
 @Configuration
-public class MyWebMvcConfig implements WebMvcConfigurer{
+public class WebMvcConfig implements WebMvcConfigurer{
     /**
      * 默认访问的是首页
      * @param registry
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/").setViewName("home");
         registry.addViewController("/login").setViewName("login");
     }
 

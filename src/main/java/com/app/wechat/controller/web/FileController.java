@@ -48,7 +48,7 @@ public class FileController {
         return Result.success(this.fileService.getFileInfo(fileId));
     }
 
-    @ApiOperation(value = "描述文件下载(V)", notes = "描述文件下载")
+    @ApiOperation(value = "描述文件(V)", notes = "描述文件")
     @GetMapping(value = "/mobileFile")
     public Result<Object> fileDownload(HttpServletResponse response) throws Exception {
         String fileName = "udid.mobileconfig";

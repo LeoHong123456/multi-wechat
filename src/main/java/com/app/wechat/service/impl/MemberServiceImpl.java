@@ -51,15 +51,15 @@ public class MemberServiceImpl extends ServiceImpl<MultiMemberMapper, MultiMembe
         String rpwd = registerDto.getRpwd();
         String ip = registerDto.getIp();
         String ipAddr = registerDto.getIpAddr();
-        if (StringUtils.equals(pwd, rpwd)) {
+        if (!StringUtils.equals(pwd, rpwd)) {
             return Result.failure(RestCodeEnum.FAIL_TO_PASSWORD_ERROR);
         }
         MultiMember member = this.lambdaQuery().eq(MultiMember::getUsername, username).one();
         if (ObjectUtils.allNotNull(member)) {
             return Result.failure(RestCodeEnum.FAIL_TO_USERNAME_IS_EXTIS);
         }
-        String emailDb = this.lambdaQuery().select(MultiMember::getEmail).eq(MultiMember::getEmail, email).getSqlSelect();
-        if (StringUtils.isNotBlank(emailDb)) {
+        MultiMember one = this.lambdaQuery().select(MultiMember::getEmail).eq(MultiMember::getEmail, email).one();
+        if (ObjectUtils.allNotNull(one)) {
             return Result.failure(RestCodeEnum.FAIL_TO_EMAIL_IS_EXTIS);
         }
         String sessionId = MD5Util.getMD5(StringsUtil.randomString(26));
