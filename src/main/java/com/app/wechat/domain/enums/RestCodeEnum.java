@@ -43,6 +43,7 @@ public enum RestCodeEnum {
      * 用户名或密码错误
      */
     FAIL_TO_LOGIN_ERROR(900005, "用户名或密码错误"),
+
     /**
      * 请重新登录
      */
@@ -54,7 +55,20 @@ public enum RestCodeEnum {
     /**
      * 文件不能为空
      */
-    FILE_UPLOAD_IS_NULL(900008,"请选择要上传的文件");
+    FILE_UPLOAD_IS_NULL(900008,"请选择要上传的文件"),
+    /**
+     * 两次输入的密码不一致
+     */
+    FAIL_TO_PASSWORD_ERROR(900009, "两次输入的密码不一致"),
+    /**
+     * 会员名已存在
+     */
+    FAIL_TO_USERNAME_IS_EXTIS(900010, "会员名已存在"),
+    /**
+     * 邮箱已存在
+     */
+    FAIL_TO_EMAIL_IS_EXTIS(900011,"邮箱已存在");
+
     private String msg;
     private Integer code;
 

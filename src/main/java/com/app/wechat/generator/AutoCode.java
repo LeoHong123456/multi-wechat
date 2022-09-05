@@ -20,7 +20,7 @@ public class AutoCode extends BaseGeneratorTest {
         AutoGenerator generator = new AutoGenerator(DATA_SOURCE_CONFIG);
         generator.strategy(strategyConfig().build());
 
-        GlobalConfig globalConfig = globalConfig().author("admin").outputDir("D://workset//multi-wechat//src/main//java").build();
+        GlobalConfig globalConfig = globalConfig().author("admin").outputDir("D://workset").build();
 
         PackageConfig packageConfig = packageConfig().parent("com.app.wechat")
                 .entity("domain.entity")

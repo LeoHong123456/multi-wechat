@@ -1,4 +1,6 @@
 package com.app.wechat.domain.dto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -24,4 +26,10 @@ public class LoginDto implements Serializable {
     @NotBlank(message = "验证码ID错误")
     @NotNull(message = "验证码ID错误")
     private String varCodeId;
+
+    @ApiModelProperty(value = "客户端IP", hidden = true)
+    private String ip;
+
+    @ApiModelProperty(value = "客户端地址", hidden = true)
+    private String ipAddr;
 }
