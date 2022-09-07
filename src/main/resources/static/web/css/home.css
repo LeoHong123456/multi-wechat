@@ -9,23 +9,36 @@
     width: 100%;
     height: 160px;
 }
-
 /*公告*/
 .note-wrapper{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
     font-size: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 5px;
     background-color: lightyellow;
 }
-
+.list-title{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 8px;
+    box-sizing: border-box;
+    background-color: forestgreen;
+}
 .wechat-item{
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
+    padding: 10px 10px;
+    box-sizing: border-box;
 }
 .wechat-item li{
     width: 45%;
     height: 120px;
     border-radius: 5px;
-    box-shadow: 0 0 0 5px rgba(177, 171, 171, 0.2);
-    margin: 5px 5px;
+    box-shadow: 0 0 5px 1px rgba(177, 171, 171, 0.2);
+    box-sizing: border-box;
 }

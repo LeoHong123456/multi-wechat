@@ -8,6 +8,8 @@ function getFileItem() {
         headers: {"Content-type": "appliction/x-www-form-urlencoded"},
         success: function (data, code, xhr) {
             data.data.forEach((v, i) =>{
+                console.log(v);
+                console.log(i);
                 createItem();
             });
         },
